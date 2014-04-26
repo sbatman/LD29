@@ -27,7 +27,7 @@ module LD29
             //load all audio  
 
             //load character graphics
-            this.load.spritesheet("content-graphics-monsters-zombies_and_skeletons", "Content/Graphics/Monsters/zombies_and_skeletons.png",32,32);
+            this.load.spritesheet("content-graphics-monsters-zombies_and_skeletons", "Content/Graphics/Monsters/GreenZombie.png",32,64);
 
 
             //  Set-up our preloader sprite

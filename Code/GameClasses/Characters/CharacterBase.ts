@@ -34,7 +34,7 @@
                     this.animations.play('right');
                     this.facing = 'right';
                 }
-            } if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+            } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
                 this.y--;
                 if (this.facing != 'up') {
                     this.animations.play('up');
