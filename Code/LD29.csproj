@@ -49,6 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
+    <Content Include="Content\Data\World\Main.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="IDev.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
