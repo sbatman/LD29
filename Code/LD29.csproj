@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="GameClasses\Characters\Player.ts" />
     <TypeScriptCompile Include="GameClasses\Hud.ts" />
     <TypeScriptCompile Include="GameClasses\World.ts" />
     <TypeScriptCompile Include="GameClasses\Characters\CharacterBase.ts" />
