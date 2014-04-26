@@ -23,6 +23,12 @@ module LD29
             this.GameWorld = new World(this.game);
             this.GameHud = new Hud(this.game);
             this.GameHud.CurrentHP = 8;
+            this.GameHud.CurrentMP = 3;
+            this.GameHud.CurrentXP = 10;
+            this.GameHud.FireInfoPopup("This is a test message");
+            this.GameHud.FireInfoPopup("And this is a second");
+            this.GameHud.FireInfoPopup("hello, how you doing ?");
+            this.GameHud.FireInfoPopup("time for cake");
             this.GameCharacter = new Characters.CharacterBase(this.game, 50, 50,'content-graphics-monsters-zombies_and_skeletons');
         }
 

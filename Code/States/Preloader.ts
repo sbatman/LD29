@@ -19,6 +19,9 @@ module LD29
             //load all images.          
             this.load.image("content-graphics-hud-statsblob", "Content/Graphics/Hud/StatsBlob.png");
             this.load.image("content-graphics-hud-redsegment", "Content/Graphics/Hud/RedSegment.png");
+            this.load.image("content-graphics-hud-bluesegment", "Content/Graphics/Hud/BlueSegment.png");
+            this.load.image("content-graphics-hud-greensegment", "Content/Graphics/Hud/GreenSegment.png");
+            this.load.image("content-graphics-hud-infopopup", "Content/Graphics/Hud/InfoPopup.png");
             //load spritesheets  
             this.load.image("content-graphics-world-dungeontiles", "Content/Graphics/World/DungeonTilesPrimary.png");
             //load all audio  

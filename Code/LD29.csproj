@@ -19,10 +19,14 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="Content\GetSource.png" />
+    <Content Include="Content\Graphics\Hud\BlueSegment.png" />
+    <Content Include="Content\Graphics\Hud\GreenSegment.png" />
+    <Content Include="Content\Graphics\Hud\InfoPopup.png" />
     <Content Include="Content\Graphics\Hud\RedSegment.png" />
     <Content Include="Content\Graphics\Hud\StatsBlob.png" />
-    <Content Include="Content\Graphics\Monsters\zombies_and_skeletons.png" />
-    <Content Include="Content\Graphics\Monsters\zombie_n_skeleton2.png" />
+    <Content Include="Content\Graphics\Monsters\GoldenZombie.png" />
+    <Content Include="Content\Graphics\Monsters\GreenZombie.png" />
+    <Content Include="Content\Graphics\Monsters\Skelly.png" />
     <Content Include="Content\Graphics\PreLoader\ProgressBar.jpg" />
     <Content Include="Content\Graphics\World\DungeonTilesPrimary.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -53,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Audio\" />
-    <Folder Include="Content\Graphics\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
