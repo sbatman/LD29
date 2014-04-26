@@ -15,6 +15,7 @@ module LD29
             this.state.add('Boot', BootState, false);
             this.state.add('Preloader', PreloaderState, false);
             this.state.add('MainMenu', MenuState, false);
+            this.state.add('Game', GameState, false);
 
             this.state.start('Boot');
         }
