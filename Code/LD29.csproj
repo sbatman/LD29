@@ -35,6 +35,7 @@
     <TypeScriptCompile Include="Libs\Phaser\phaser.d.ts">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="States\Game.ts" />
     <TypeScriptCompile Include="States\MainMenu.ts" />
     <TypeScriptCompile Include="States\Preloader.ts" />
     <TypeScriptCompile Include="States\Boot.ts" />
