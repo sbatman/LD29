@@ -16,16 +16,22 @@ module LD29
         CurrentMP: number;
         CurrentXP: number;
 
+        CurretScore: number;
+
         private LastHP: number;
         private LastMP: number;
         private LastXP: number;
+        private LastScore: number;
 
-        TheGame: Phaser.Game; // you have just lost this <<<<< :D
+        private TheGame: Phaser.Game; // you have just lost this <<<<< :D
 
-        InfoPopUpGraphic: Phaser.Sprite;
-        InfoPopUpFadeoutTimer: Phaser.Timer;
-        InfoPopUpPendingStrings: Array<string>;
-        InfoPopUpText: Phaser.Text;
+        private InfoPopUpGraphic: Phaser.Sprite;
+        private InfoPopUpFadeoutTimer: Phaser.Timer;
+        private InfoPopUpPendingStrings: Array<string>;
+        private InfoPopUpText: Phaser.Text;
+
+        private ScoreBarGraphic: Phaser.Sprite;
+        private ScoreBarText: Phaser.Text;
 
         constructor(game: Phaser.Game)
         {
@@ -37,9 +43,11 @@ module LD29
             this.LastHP = 0;
             this.LastMP = 0;
             this.LastXP = 0;
+            this.LastScore = 0;
             this.CurrentHP = 0;
             this.CurrentMP = 0;
             this.CurrentXP = 0;
+            this.CurretScore = 0;
             this.HPBarSprites = new Array<Phaser.Sprite>();
             this.MPBarSprites = new Array<Phaser.Sprite>();
             this.XPBarSprites = new Array<Phaser.Sprite>();
@@ -53,6 +61,10 @@ module LD29
             this.InfoPopUpFadeoutTimer = this.TheGame.time.create(false);
             this.InfoPopUpText = this.TheGame.add.text(0, 0, "", { font: "20px Arial", fill: "#DAD45E", stroke: '#000000', strokeThickness: 3 });
             this.InfoPopUpText.alpha = 0;
+            this.ScoreBarGraphic = new Phaser.Sprite(game, 0, 0, "content-graphics-hud-scorebar");
+            game.add.existing(this.ScoreBarGraphic);
+            this.ScoreBarText = this.TheGame.add.text(2, 2, "", { font: "20px Arial", fill: "#DAD45E", stroke: '#000000', strokeThickness: 3 });
+            
         }
 
         FireInfoPopup(message: string)
@@ -69,7 +81,8 @@ module LD29
             this.InfoPopUpText.y = (this.TheGame.canvas.height * 0.5) - (this.InfoPopUpText.height + 18);
 
 
-            this.TheGame.add.tween(this.InfoPopUpGraphic).to({ alpha: 1 }, 300, Phaser.Easing.Linear.None, true);
+            this.TheGame.add.tween(this.InfoPopUpGraphic).to({ alpha: 1 }, 300,
+                Phaser.Easing.Linear.None, true);
             this.TheGame.add.tween(this.InfoPopUpText).to({ alpha: 1 }, 300, Phaser.Easing.Linear.None, true);
             this.InfoPopUpFadeoutTimer.add(3000, this.InfoPopupComplete, this);
             this.InfoPopUpFadeoutTimer.start();
@@ -89,6 +102,11 @@ module LD29
 
         Update()
         {
+            if (this.CurretScore != this.LastScore)
+            {
+                this.LastScore = this.CurretScore;
+                this.ScoreBarText.text = "Score: " + Math.round(this.CurretScore);
+            }
 
             if (this.InfoPopUpPendingStrings.length != 0)
             {

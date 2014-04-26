@@ -7,7 +7,7 @@
         constructor(game: Phaser.Game, x: number, y: number, image: string) {
             super(game, x, y, image, 0);
 
-            this.anchor.setTo(0.5, 0);
+            this.anchor.setTo(0.5, 1);
 
             this.facing = 'right';
             game.add.existing(this);
@@ -18,10 +18,14 @@
             this.animations.add('right', [6, 7, 8], 10, true);
             this.animations.add('up', [9, 10, 11], 10, true);
 
+            game.physics.enable(this);
+            this.body.height = 32;
+
         }
 
         MovementUpdate() {
 
+            this.body.velocity.y = 10;
             //if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
             //    this.x--;
 

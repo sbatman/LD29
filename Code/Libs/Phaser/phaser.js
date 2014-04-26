@@ -46365,14 +46365,14 @@ Phaser.Physics.Arcade.prototype = {
         }
 
         //  They overlap. Any custom callbacks?
-
+   
         //  A local callback always takes priority over a layer level callback
         if (tile.collisionCallback && !tile.collisionCallback.call(tile.collisionCallbackContext, body.sprite, tile))
         {
             //  If it returns true then we can carry on, otherwise we should abort.
             return false;
         }
-        else if (tile.layer.callbacks[tile.index] && !tile.layer.callbacks[tile.index].callback.call(tile.layer.callbacks[tile.index].callbackContext, body.sprite, tile))
+        else if (tile.layer.callbacks != null && tile.layer.callbacks[tile.index] && !tile.layer.callbacks[tile.index].callback.call(tile.layer.callbacks[tile.index].callbackContext, body.sprite, tile))
         {
             //  If it returns true then we can carry on, otherwise we should abort.
             return false;
@@ -51528,7 +51528,7 @@ Phaser.TilemapParser = {
 
             for (var x = 0; x < column.length; x++)
             {
-                output[y][x] = new Phaser.Tile(0, parseInt(column[x], 10), x, y, tileWidth, tileHeight);
+                output[y][x] = new Phaser.Tile(map.layers[0], parseInt(column[x], 10), x, y, tileWidth, tileHeight);
             }
 
             if (width === 0)
