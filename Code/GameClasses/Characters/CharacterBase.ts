@@ -5,8 +5,9 @@
         constructor(game: Phaser.Game, x: number, y: number, image: string) {
             super(game, x, y, image, 0);
 
+            game.load.spritesheet('skel', image, 32, 32);
             this.anchor.setTo(0.5, 0);
-            this.animations.add('walk', [0, 1], 5, true);
+            this.animations.add('right', [0, 1], 5, true);
 
             this.facing = 'right';
             game.add.existing(this);

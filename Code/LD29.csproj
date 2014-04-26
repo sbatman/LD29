@@ -21,6 +21,8 @@
     <Content Include="Content\GetSource.png" />
     <Content Include="Content\Graphics\Hud\RedSegment.png" />
     <Content Include="Content\Graphics\Hud\StatsBlob.png" />
+    <Content Include="Content\Graphics\Monsters\zombies_and_skeletons.png" />
+    <Content Include="Content\Graphics\Monsters\zombie_n_skeleton2.png" />
     <Content Include="Content\Graphics\PreLoader\ProgressBar.jpg" />
     <Content Include="Content\Graphics\World\DungeonTilesPrimary.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -51,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Audio\" />
+    <Folder Include="Content\Graphics\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />

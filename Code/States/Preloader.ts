@@ -23,6 +23,10 @@ module LD29
             this.load.image("content-graphics-world-dungeontiles", "Content/Graphics/World/DungeonTilesPrimary.png");
             //load all audio  
 
+            //load character graphics
+            this.load.spritesheet("content-graphics-monsters-zombies_and_skeletons", "Content/Graphics/Monsters/zombies_and_skeletons.png",32,32);
+
+
             //  Set-up our preloader sprite
             this.preloadBar = this.add.sprite((window.innerWidth / 2) - 200, (window.innerHeight / 2) - 20, 'content-graphics-PreLoader-ProgressBar');
             this.load.setPreloadSprite(this.preloadBar);

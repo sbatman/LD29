@@ -19,10 +19,11 @@ module LD29
 
         create()
         {
+
             this.GameWorld = new World(this.game);
             this.GameHud = new Hud(this.game);
             this.GameHud.CurrentHP = 8;
-            this.GameCharacter = new Characters.CharacterBase(this.game,50,50,'');
+            this.GameCharacter = new Characters.CharacterBase(this.game, 50, 50,'content-graphics-monsters-zombies_and_skeletons');
         }
 
         update()
