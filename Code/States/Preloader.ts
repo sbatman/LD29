@@ -17,7 +17,8 @@ module LD29
             //Load world Data
             this.load.tilemap("content-data-world-main", "Content/Data/World/Main.csv", null, Phaser.Tilemap.CSV);
             //load all images.          
-            
+            this.load.image("content-graphics-hud-statsblob", "Content/Graphics/Hud/StatsBlob.png");
+            this.load.image("content-graphics-hud-redsegment", "Content/Graphics/Hud/RedSegment.png");
             //load spritesheets  
             this.load.image("content-graphics-world-dungeontiles", "Content/Graphics/World/DungeonTilesPrimary.png");
             //load all audio  

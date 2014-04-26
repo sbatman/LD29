@@ -19,6 +19,8 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="Content\GetSource.png" />
+    <Content Include="Content\Graphics\Hud\RedSegment.png" />
+    <Content Include="Content\Graphics\Hud\StatsBlob.png" />
     <Content Include="Content\Graphics\PreLoader\ProgressBar.jpg" />
     <Content Include="Content\Graphics\World\DungeonTilesPrimary.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -34,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="GameClasses\Hud.ts" />
     <TypeScriptCompile Include="GameClasses\World.ts" />
     <TypeScriptCompile Include="MainGame.ts" />
     <TypeScriptCompile Include="Libs\Phaser\phaser.d.ts">
