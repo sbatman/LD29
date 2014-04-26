@@ -8,14 +8,15 @@ module LD29
 {
     export class GameState extends Phaser.State
     {
+        GameWorld: World;
         preload()
         {
-  
+
         }
 
         create()
         {
-
+            this.GameWorld = new World(this.game);
         }
     }
 

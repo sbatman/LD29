@@ -15,7 +15,7 @@ module LD29
         preload()
         {
             //load all images.          
-
+            this.load.image("content-graphics-world-dungeontiles", "Content/Graphics/World/DungeonTilesPrimary.png");
             //load spritesheets  
 
             //load all audio  

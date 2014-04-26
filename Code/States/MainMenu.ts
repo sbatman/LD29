@@ -16,7 +16,7 @@ module LD29
 
         create()
         {
-
+            this.game.state.start('Game', true, false);
 
         }
 

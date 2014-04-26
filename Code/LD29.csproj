@@ -20,6 +20,9 @@
     <Content Include="app.css" />
     <Content Include="Content\GetSource.png" />
     <Content Include="Content\Graphics\PreLoader\ProgressBar.jpg" />
+    <Content Include="Content\Graphics\World\DungeonTilesPrimary.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\PoweredBy.png" />
     <Content Include="index.html" />
     <Content Include="Libs\Phaser\phaser.js">
@@ -31,6 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="GameClasses\World.ts" />
     <TypeScriptCompile Include="MainGame.ts" />
     <TypeScriptCompile Include="Libs\Phaser\phaser.d.ts">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -42,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Audio\" />
-    <Folder Include="GameClasses\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
