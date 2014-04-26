@@ -24,6 +24,8 @@
     <Content Include="Content\Graphics\Hud\InfoPopup.png" />
     <Content Include="Content\Graphics\Hud\RedSegment.png" />
     <Content Include="Content\Graphics\Hud\StatsBlob.png" />
+    <Content Include="Content\Graphics\Monsters\zombies_and_skeletons.png" />
+    <Content Include="Content\Graphics\Monsters\zombie_n_skeleton2.png" />
     <Content Include="Content\Graphics\PreLoader\ProgressBar.jpg" />
     <Content Include="Content\Graphics\World\DungeonTilesPrimary.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -41,6 +43,8 @@
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="GameClasses\Hud.ts" />
     <TypeScriptCompile Include="GameClasses\World.ts" />
+    <TypeScriptCompile Include="GameClasses\Characters\CharacterBase.ts" />
+    <TypeScriptCompile Include="GameClasses\Characters\Monster.ts" />
     <TypeScriptCompile Include="MainGame.ts" />
     <TypeScriptCompile Include="Libs\Phaser\phaser.d.ts">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -52,13 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Audio\" />
+    <Folder Include="Content\Graphics\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
     <Content Include="Content\Data\World\Main.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="IDev.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

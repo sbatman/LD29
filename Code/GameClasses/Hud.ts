@@ -77,7 +77,7 @@ module LD29
 
         private InfoPopupMsgRemaining()
         {
-            return this.InfoPopUpPendingStrings.length;
+            return this.InfoPopUpPendingStrings.length + ((!this.InfoPopUpFadeoutTimer.running && this.InfoPopUpText.alpha == 0) ? 0 : 1);
         }
 
         private InfoPopupComplete()
