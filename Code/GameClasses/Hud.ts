@@ -43,9 +43,11 @@ module LD29
             this.LastHP = 0;
             this.LastMP = 0;
             this.LastXP = 0;
+            this.LastScore = 0;
             this.CurrentHP = 0;
             this.CurrentMP = 0;
             this.CurrentXP = 0;
+            this.CurretScore = 0;
             this.HPBarSprites = new Array<Phaser.Sprite>();
             this.MPBarSprites = new Array<Phaser.Sprite>();
             this.XPBarSprites = new Array<Phaser.Sprite>();
@@ -60,8 +62,9 @@ module LD29
             this.InfoPopUpText = this.TheGame.add.text(0, 0, "", { font: "20px Arial", fill: "#DAD45E", stroke: '#000000', strokeThickness: 3 });
             this.InfoPopUpText.alpha = 0;
             this.ScoreBarGraphic = new Phaser.Sprite(game, 0, 0, "content-graphics-hud-scorebar");
-            this.ScoreBarText = this.TheGame.add.text(0, 0, "", { font: "20px Arial", fill: "#DAD45E", stroke: '#000000', strokeThickness: 3 });
             game.add.existing(this.ScoreBarGraphic);
+            this.ScoreBarText = this.TheGame.add.text(2, 2, "", { font: "20px Arial", fill: "#DAD45E", stroke: '#000000', strokeThickness: 3 });
+            
         }
 
         FireInfoPopup(message: string)
@@ -99,10 +102,10 @@ module LD29
 
         Update()
         {
-            if (this.LastScore != this.CurretScore)
+            if (this.CurretScore != this.LastScore)
             {
                 this.LastScore = this.CurretScore;
-                this.ScoreBarText.text = "Score: " + this.CurretScore;
+                this.ScoreBarText.text = "Score: " + Math.round(this.CurretScore);
             }
 
             if (this.InfoPopUpPendingStrings.length != 0)
