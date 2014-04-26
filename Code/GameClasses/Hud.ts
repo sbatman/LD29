@@ -16,9 +16,9 @@ module LD29
         CurrentMP: number;
         CurrentXP: number;
 
-        LastHP: number;
-        LastMP: number;
-        LastXP: number;
+        private LastHP: number;
+        private LastMP: number;
+        private LastXP: number;
 
         TheGame: Phaser.Game; // you have just lost this <<<<< :D
 
