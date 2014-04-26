@@ -16,12 +16,15 @@ module LD29
         {
             //Load world Data
             this.load.tilemap("content-data-world-main", "Content/Data/World/Main.csv", null, Phaser.Tilemap.CSV);
-            //load all images.          
+            //load all hud images.          
             this.load.image("content-graphics-hud-statsblob", "Content/Graphics/Hud/StatsBlob.png");
             this.load.image("content-graphics-hud-redsegment", "Content/Graphics/Hud/RedSegment.png");
             this.load.image("content-graphics-hud-bluesegment", "Content/Graphics/Hud/BlueSegment.png");
             this.load.image("content-graphics-hud-greensegment", "Content/Graphics/Hud/GreenSegment.png");
             this.load.image("content-graphics-hud-infopopup", "Content/Graphics/Hud/InfoPopup.png");
+            this.load.image("content-graphics-hud-scorebar", "Content/Graphics/Hud/ScoreBar.png");
+
+
             //load spritesheets  
             this.load.image("content-graphics-world-dungeontiles", "Content/Graphics/World/DungeonTilesPrimary.png");
             //load all audio  

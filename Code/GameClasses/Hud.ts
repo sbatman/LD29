@@ -16,16 +16,22 @@ module LD29
         CurrentMP: number;
         CurrentXP: number;
 
+        CurretScore: number;
+
         private LastHP: number;
         private LastMP: number;
         private LastXP: number;
+        private LastScore: number;
 
-        TheGame: Phaser.Game; // you have just lost this <<<<< :D
+        private TheGame: Phaser.Game; // you have just lost this <<<<< :D
 
-        InfoPopUpGraphic: Phaser.Sprite;
-        InfoPopUpFadeoutTimer: Phaser.Timer;
-        InfoPopUpPendingStrings: Array<string>;
-        InfoPopUpText: Phaser.Text;
+        private InfoPopUpGraphic: Phaser.Sprite;
+        private InfoPopUpFadeoutTimer: Phaser.Timer;
+        private InfoPopUpPendingStrings: Array<string>;
+        private InfoPopUpText: Phaser.Text;
+
+        private ScoreBarGraphic: Phaser.Sprite;
+        private ScoreBarText: Phaser.Text;
 
         constructor(game: Phaser.Game)
         {
@@ -53,6 +59,9 @@ module LD29
             this.InfoPopUpFadeoutTimer = this.TheGame.time.create(false);
             this.InfoPopUpText = this.TheGame.add.text(0, 0, "", { font: "20px Arial", fill: "#DAD45E", stroke: '#000000', strokeThickness: 3 });
             this.InfoPopUpText.alpha = 0;
+            this.ScoreBarGraphic = new Phaser.Sprite(game, 0, 0, "content-graphics-hud-scorebar");
+            this.ScoreBarText = this.TheGame.add.text(0, 0, "", { font: "20px Arial", fill: "#DAD45E", stroke: '#000000', strokeThickness: 3 });
+            game.add.existing(this.ScoreBarGraphic);
         }
 
         FireInfoPopup(message: string)
@@ -69,7 +78,8 @@ module LD29
             this.InfoPopUpText.y = (this.TheGame.canvas.height * 0.5) - (this.InfoPopUpText.height + 18);
 
 
-            this.TheGame.add.tween(this.InfoPopUpGraphic).to({ alpha: 1 }, 300, Phaser.Easing.Linear.None, true);
+            this.TheGame.add.tween(this.InfoPopUpGraphic).to({ alpha: 1 }, 300,
+                Phaser.Easing.Linear.None, true);
             this.TheGame.add.tween(this.InfoPopUpText).to({ alpha: 1 }, 300, Phaser.Easing.Linear.None, true);
             this.InfoPopUpFadeoutTimer.add(3000, this.InfoPopupComplete, this);
             this.InfoPopUpFadeoutTimer.start();
@@ -89,6 +99,11 @@ module LD29
 
         Update()
         {
+            if (this.LastScore != this.CurretScore)
+            {
+                this.LastScore = this.CurretScore;
+                this.ScoreBarText.text = "Score: " + this.CurretScore;
+            }
 
             if (this.InfoPopUpPendingStrings.length != 0)
             {
