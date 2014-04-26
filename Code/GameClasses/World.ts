@@ -23,8 +23,6 @@ module LD29
             this.MasterMap_L1.resizeWorld();
             this.MasterMap.setCollisionBetween(33, 37);
             this.MasterMap.setCollisionBetween(12, 16);
-            this.MasterMap.setCollision(54);
-            this.MasterMap.setCollision(56);
             this.MasterMap.setCollision(59);
             this.MasterMap_L1.debug = true;
             this.CollidableSprites = new Array<Phaser.Sprite>();
