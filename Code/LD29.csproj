@@ -56,7 +56,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Audio\" />
-    <Folder Include="Content\Graphics\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
