@@ -30,10 +30,6 @@ module LD29
             this.GameHud.FireInfoPopup("And this is a second");
             this.GameHud.FireInfoPopup("hello, how you doing ?");
             this.GameHud.FireInfoPopup("time for cake");
-            //this.Monsters = new Array<Characters.Monster>(2);
-            //this.Monsters[0] = new Characters.Monster(this.game, 100, 100, 'content-graphics-monsters-green_zombie');
-            //this.Monsters[0] = 
-
             this.Monsters.push(new Characters.Monster(this.game, 400, 500, 'content-graphics-monsters-skeleton'));
             this.Monsters.push(new Characters.Monster(this.game, 100, 100, 'content-graphics-monsters-green_zombie'));
 

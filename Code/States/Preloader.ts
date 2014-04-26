@@ -14,7 +14,7 @@ module LD29
 
         preload()
         {
-            //Load world Data
+            //Load world Data 
             this.load.tilemap("content-data-world-main", "Content/Data/World/Main.csv", null, Phaser.Tilemap.CSV);
             //load all hud images.          
             this.load.image("content-graphics-hud-statsblob", "Content/Graphics/Hud/StatsBlob.png");

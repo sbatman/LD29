@@ -11,23 +11,24 @@ module LD29.Characters {
 
         MovementUpdate() {
 
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
-                this.x--;
-
+                this.body.velocity.x = 0;
+                this.body.velocity.y = 0;
+                if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+                    this.body.velocity.x = -100;
                 this.animations.play('left');
                 this.facing = 'left';
                 if (this.animations.paused) {
                     this.animations.paused = false;
                 }
-            } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
-                this.x++;
+                } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
+                    this.body.velocity.x = 100;
                 this.animations.play('right');
                 this.facing = 'right';
                 if (this.animations.paused) {
                     this.animations.paused = false;
                 }
             } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
-                this.y--;
+                this.body.velocity.y = -100;
                 if (this.facing != 'up') {
                     this.animations.play('up');
                     this.facing = 'up';
@@ -36,7 +37,7 @@ module LD29.Characters {
                     this.animations.paused = false;
                 }
             } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
-                this.y++;
+                this.body.velocity.y = 100;
                 if (this.facing != 'down') {
                     this.animations.play('down');
                     this.facing = 'down';
