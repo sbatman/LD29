@@ -75,7 +75,12 @@ module LD29
             this.InfoPopUpFadeoutTimer.start();
         }
 
-        InfoPopupComplete()
+        private InfoPopupMsgRemaining()
+        {
+            return this.InfoPopUpPendingStrings.length;
+        }
+
+        private InfoPopupComplete()
         {
             this.InfoPopUpFadeoutTimer.stop();
             this.TheGame.add.tween(this.InfoPopUpGraphic).to({ alpha: 0 }, 300, Phaser.Easing.Linear.None, true);
