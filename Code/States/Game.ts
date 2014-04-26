@@ -29,6 +29,7 @@ module LD29
         update()
         {
             this.GameHud.Update();
+            this.GameCharacter.MovementUpdate();
         }
     }
 
