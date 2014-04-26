@@ -7,6 +7,11 @@ module LD29.Characters {
             this.animations.play('down');
             this.animations.paused = true;
         }
+
+        MovementUpdate() {
+
+            this.body.velocity.y = 20;
+        }
     }
 }
 
