@@ -8,6 +8,8 @@ module LD29
 {
     export class GameState extends Phaser.State
     {
+        GameCharacter: Characters.CharacterBase;
+
         preload()
         {
   
@@ -15,7 +17,7 @@ module LD29
 
         create()
         {
-
+            this.GameCharacter = new Characters.CharacterBase(this.game,50,50,'');
         }
     }
 

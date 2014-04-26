@@ -31,6 +31,8 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="GameClasses\Characters\CharacterBase.ts" />
+    <TypeScriptCompile Include="GameClasses\Characters\Monster.ts" />
     <TypeScriptCompile Include="MainGame.ts" />
     <TypeScriptCompile Include="Libs\Phaser\phaser.d.ts">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -42,11 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Audio\" />
-    <Folder Include="GameClasses\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
-    <None Include="IDev.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
