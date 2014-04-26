@@ -10,7 +10,8 @@ module LD29
     {
         GameWorld: World;
         GameHud: Hud;
-        GameCharacter: Characters.CharacterBase;
+        GameCharacterBase: Characters.CharacterBase;
+        GameCharacter: Characters.Player;
 
         preload()
         {
@@ -29,7 +30,8 @@ module LD29
             this.GameHud.FireInfoPopup("And this is a second");
             this.GameHud.FireInfoPopup("hello, how you doing ?");
             this.GameHud.FireInfoPopup("time for cake");
-            this.GameCharacter = new Characters.CharacterBase(this.game, 50, 50,'content-graphics-monsters-zombies_and_skeletons');
+            this.GameCharacterBase = new Characters.CharacterBase(this.game, 50, 50, 'content-graphics-monsters-zombies_and_skeletons');
+            this.GameCharacter = new Characters.Player(this.game, 50, 50,'content-graphics-monsters-zombies_and_skeletons');
         }
 
         update()
