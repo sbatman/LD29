@@ -19,7 +19,12 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="Content\GetSource.png" />
+    <Content Include="Content\Graphics\Hud\RedSegment.png" />
+    <Content Include="Content\Graphics\Hud\StatsBlob.png" />
     <Content Include="Content\Graphics\PreLoader\ProgressBar.jpg" />
+    <Content Include="Content\Graphics\World\DungeonTilesPrimary.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\PoweredBy.png" />
     <Content Include="index.html" />
     <Content Include="Libs\Phaser\phaser.js">
@@ -31,6 +36,8 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="GameClasses\Hud.ts" />
+    <TypeScriptCompile Include="GameClasses\World.ts" />
     <TypeScriptCompile Include="GameClasses\Characters\CharacterBase.ts" />
     <TypeScriptCompile Include="GameClasses\Characters\Monster.ts" />
     <TypeScriptCompile Include="MainGame.ts" />
@@ -47,6 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
+    <Content Include="Content\Data\World\Main.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

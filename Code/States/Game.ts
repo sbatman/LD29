@@ -8,16 +8,26 @@ module LD29
 {
     export class GameState extends Phaser.State
     {
+        GameWorld: World;
+        GameHud: Hud;
         GameCharacter: Characters.CharacterBase;
 
         preload()
         {
-  
+
         }
 
         create()
         {
+            this.GameWorld = new World(this.game);
+            this.GameHud = new Hud(this.game);
+            this.GameHud.CurrentHP = 8;
             this.GameCharacter = new Characters.CharacterBase(this.game,50,50,'');
+        }
+
+        update()
+        {
+            this.GameHud.Update();
         }
     }
 
