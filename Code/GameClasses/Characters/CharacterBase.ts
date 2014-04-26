@@ -5,18 +5,21 @@
         constructor(game: Phaser.Game, x: number, y: number, image: string) {
             super(game, x, y, image, 0);
 
-            game.load.spritesheet('skel', image, 32, 32);
             this.anchor.setTo(0.5, 0);
-            this.animations.add('right', [0, 1], 5, true);
 
             this.facing = 'right';
             game.add.existing(this);
-            //game.physics.arcade.enable(this);
-            //this.body.bounce.y = 0;
+
+
+            this.animations.add('down', [0, 1, 2], 10, true);
+            this.animations.add('left', [3, 4, 5], 10, true);
+            this.animations.add('right', [6, 7, 8], 10, true);
+            this.animations.add('up', [9, 10, 11], 10, true);
+            this.animations.play('right');
+
         }
 
         MovementUpdate() {
-            this.game.camera.x = this.body.position.x;
 
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
                 this.x--;
@@ -25,31 +28,24 @@
                     this.animations.play('left');
                     this.facing = 'left';
                 }
-                if (this.scale.x == 1) this.scale.x = -1;
             } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
                 this.x++;
                 if (this.facing != 'right') {
                     this.animations.play('right');
                     this.facing = 'right';
                 }
-                this.animations.play('walk');
-                if (this.scale.x == -1) this.scale.x = 1;
-            } if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
-                this.y++;
+            } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+                this.y--;
                 if (this.facing != 'up') {
                     this.animations.play('up');
                     this.facing = 'up';
                 }
-                this.animations.play('walk');
-                if (this.scale.x == 1) this.scale.x = -1;
             } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
-                this.y--;
+                this.y++;
                 if (this.facing != 'down') {
                     this.animations.play('down');
                     this.facing = 'down';
                 }
-                this.animations.play('walk');
-                if (this.scale.x == -1) this.scale.x = 1;
             } else {
                 this.animations.frame = 0;
             }
