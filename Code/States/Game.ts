@@ -20,6 +20,9 @@ module LD29
             this.GameWorld = new World(this.game);
             this.GameHud = new Hud(this.game);
             this.GameHud.CurrentHP = 8;
+            this.GameHud.CurrentMP = 3;
+            this.GameHud.CurrentXP = 10;
+            this.GameHud.FireInfoPopup("test");
         }
 
         update()

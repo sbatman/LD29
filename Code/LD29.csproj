@@ -19,6 +19,9 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="Content\GetSource.png" />
+    <Content Include="Content\Graphics\Hud\BlueSegment.png" />
+    <Content Include="Content\Graphics\Hud\GreenSegment.png" />
+    <Content Include="Content\Graphics\Hud\InfoPopup.png" />
     <Content Include="Content\Graphics\Hud\RedSegment.png" />
     <Content Include="Content\Graphics\Hud\StatsBlob.png" />
     <Content Include="Content\Graphics\PreLoader\ProgressBar.jpg" />
