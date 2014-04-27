@@ -25,22 +25,29 @@ module LD29
         {
             this.game.physics.startSystem(Phaser.Physics.ARCADE);           
             this.GameWorld = new World(this.game);
+           
+            //this.Monsters = new Array<Characters.Monster>(2);
+            //this.Monsters[0] = new Characters.Monster(this.game, 100, 100, 'content-graphics-monsters-green_zombie');
+            //this.Monsters[0] = 
+
+            this.Monsters.push(new Characters.Monster(this.game, 400, 500, 'content-graphics-monsters-skeleton'));
+            this.Monsters.push(new Characters.Monster(this.game, 100, 100, 'content-graphics-monsters-green_zombie'));
+
+            this.GameCharacter = new Characters.Player(this.game, 750, 600,'content-graphics-monsters-gold_zombie');
+     
+            this.GameWorld.AddCharacter(this.GameCharacter);
+
+            for (var i = 0; i < this.Monsters.length; i++) {
+                this.GameWorld.AddCharacter(this.Monsters[i]);
+            }
             this.GameHud = new Hud(this.game);
             this.GameHud.FireInfoPopup("This is a test message");
             this.GameHud.FireInfoPopup("And this is a second");
             this.GameHud.FireInfoPopup("hello, how you doing ?");
             this.GameHud.FireInfoPopup("time for cake");
-            this.Monsters.push(new Characters.Monster(this.game, 400, 500, 'content-graphics-monsters-skeleton'));
-            this.Monsters.push(new Characters.Monster(this.game, 100, 100, 'content-graphics-monsters-green_zombie'));
-
-            this.GameCharacter = new Characters.Player(this.game, 750, 600,'content-graphics-monsters-gold_zombie');
             this.GameHud.CurretScore = 9001;
-            this.GameWorld.SetSpriteAsCollidable(this.GameCharacter);
-
-            for (var i = 0; i < this.Monsters.length; i++) {
-                this.GameWorld.SetSpriteAsCollidable(this.Monsters[i]);
-            }
         }
+
 
         update()
         {
