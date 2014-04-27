@@ -9,7 +9,7 @@ module LD29
     export class GameState extends Phaser.State
     {
         GameWorld: World;
-        GameHud: Hud;
+        static GameHud: Hud;
         Monsters: Characters.Monster[] = [];
         GameCharacterBase: Characters.CharacterBase;
         GameCharacter: Characters.Player;
@@ -38,28 +38,19 @@ module LD29
             {
                 this.Monsters[i].SetTarget(this.GameCharacter);
             }
-            this.GameHud = new Hud(this.game);
-            this.GameHud.FireInfoPopup("This is a test message");
-            this.GameHud.FireInfoPopup("And this is a second");
-            this.GameHud.FireInfoPopup("hello, how you doing ?");
-            this.GameHud.FireInfoPopup("time for cake");
-            this.GameHud.CurretScore = 9001;
+            GameState.GameHud = new Hud(this.game);
+            GameState.GameHud.FireInfoPopup("This is a test message");
+            GameState.GameHud.FireInfoPopup("And this is a second");
+            GameState.GameHud.FireInfoPopup("hello, how you doing ?");
+            GameState.GameHud.FireInfoPopup("time for cake");
+            GameState.GameHud.CurretScore = 9001;
         }
-
 
         update()
         {
             this.GameWorld.Update();
-            this.GameHud.Update();
-
-            this.GameHud.CurrentHP = this.game.rnd.realInRange(0, 10);
-            this.GameHud.CurrentMP = this.game.rnd.realInRange(0, 10);
-            this.GameHud.CurrentXP = this.game.rnd.realInRange(0, 10);
-            this.GameHud.CurretScore = this.game.rnd.realInRange(9001, 9005);            
-        }
-        render()
-        {
-            this.game.debug.bodyInfo(this.Monsters[1] , 32, 320);
+            GameState.GameHud.Update();
+            GameState.GameHud.CurretScore = this.game.rnd.realInRange(9001, 9005);            
         }
     }
 

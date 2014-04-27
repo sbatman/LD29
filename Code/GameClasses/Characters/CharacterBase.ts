@@ -40,10 +40,6 @@
 
         update()
         {
-            if (this.CanAttackCounter > 0)
-            {
-                this.CanAttackCounter--;
-            }
         }
 
         MovementUpdate() {}

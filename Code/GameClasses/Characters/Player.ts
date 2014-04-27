@@ -9,6 +9,14 @@ module LD29.Characters {
             game.camera.follow(this);
         }
 
+        update()
+        {
+            GameState.GameHud.CurrentHP = (this.Health / this.MaxHealth) * 10;
+            if (this.CanAttackCounter > 0)
+            {
+                this.CanAttackCounter--;
+            }
+        }
 
         MovementUpdate() {
 
@@ -56,16 +64,16 @@ module LD29.Characters {
                 switch (this.facing)
                 {
                     case 'left':
-                        World.AddAttack(new DamageBox(this.game, this.body.x - 50, this.body.y,-5,0));
+                        World.AddAttack(new DamageBox(this.game, this.body.x - 35, this.body.y,-8,0));
                         break;
                     case 'right':
-                        World.AddAttack(new DamageBox(this.game, this.body.x + 50, this.body.y,5,0));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 35, this.body.y,8,0));
                         break;
                     case 'up':
-                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y - 50,0,-5));
+                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y - 35,0,-8));
                         break;
                     case 'down':
-                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y + 50,0,5));
+                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y + 35,0,8));
                         break;
 
                 }
