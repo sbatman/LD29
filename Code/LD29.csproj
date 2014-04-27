@@ -19,7 +19,8 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="Content\GetSource.png" />
-    <Content Include="Content\Graphics\Attacks\HitSpotSword.png" />
+    <Content Include="Content\Graphics\Attacks\HitSpotAcid.png" />
+    <Content Include="Content\Graphics\Attacks\HitSpotBlades.png" />
     <Content Include="Content\Graphics\Attacks\HitSpotSpell.png" />
     <Content Include="Content\Graphics\Hud\BlueSegment.png" />
     <Content Include="Content\Graphics\Hud\GreenSegment.png" />

@@ -12,21 +12,21 @@
 
         constructor(game: Phaser.Game, x: number, y: number, velox: number, veloy: number, owner: Characters.CharacterBase, type: number)
         {
-            super(game, x, y, DamageBox.GetGraphic(type) , 0);
+            super(game, x, y, DamageBox.GetGraphic(type), 0);
             game.physics.enable(this);
 
-
+            this.anchor.setTo(0.5, 0.5);
 
             this.Owner = owner;
 
             game.add.existing(this);
-
+            this.rotation = Phaser.Math.angleBetween(0, 0, veloy, velox );
             switch (type)
             {
                 case 0:
                     this.Strength = 1;
-                    this.body.mass = 100;
-                    this.RemainingTime = 35;
+                    this.body.mass = 30;
+                    this.RemainingTime = 30;
                     this.DieOnHit = true;
                     this.TargetVeloX = velox * 200;
                     this.TargetVeloY = veloy * 200;
@@ -38,15 +38,23 @@
                     this.TargetVeloX = velox * 50;
                     this.TargetVeloY = veloy * 50;
                     break;
+                case 2:
+                    this.Strength = 1;
+                    this.body.mass = 30;
+                    this.RemainingTime = 150;
+                    this.DieOnHit = true;
+                    this.TargetVeloX = velox * 25;
+                    this.TargetVeloY = veloy * 25;
+                    break;
             }
-
         }
         private static GetGraphic(type: number)
         {
             switch (type)
             {
-                case 0: return "content-graphics-attacks-hitspotsword";
+                case 0: return "content-graphics-attacks-hitspotblades";
                 case 1: return "content-graphics-attacks-hitspotspell";
+                case 2: return "content-graphics-attacks-hitspotacid";
             }
         }
         update()
@@ -54,6 +62,10 @@
             this.body.velocity.x = this.TargetVeloX;
             this.body.velocity.y = this.TargetVeloY;
             this.RemainingTime--;
+        }
+        render()
+        {
+            this.game.debug.body(this);
         }
     }
 }

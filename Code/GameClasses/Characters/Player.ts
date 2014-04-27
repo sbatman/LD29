@@ -82,16 +82,16 @@ module LD29.Characters
                 switch (this.facing)
                 {
                     case 'left':
-                        World.AddAttack(new DamageBox(this.game, this.body.x + 5, this.body.y, -1, 0,this,0));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8 + 5, this.body.y + 8, -1, 0,this,0));
                         break;
                     case 'right':
-                        World.AddAttack(new DamageBox(this.game, this.body.x - 5, this.body.y, 1, 0, this, 0));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8 - 5, this.body.y + 8, 1, 0, this, 0));
                         break;
                     case 'up':
-                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y + 5, 0, -1, this, 0));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8+ 5, 0, -1, this, 0));
                         break;
                     case 'down':
-                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y - 5, 0, 1, this, 0));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 - 5, 0, 1, this, 0));
                         break;
 
                 }
@@ -102,16 +102,16 @@ module LD29.Characters
                 switch (this.facing)
                 {
                     case 'left':
-                        World.AddAttack(new DamageBox(this.game, this.body.x + 5, this.body.y, -1, 0, this, 1));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8 + 5, this.body.y + 8, -1, 0, this, 2));
                         break;
                     case 'right':
-                        World.AddAttack(new DamageBox(this.game, this.body.x - 5, this.body.y, 1, 0, this, 1));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8 - 5, this.body.y + 8, 1, 0, this, 2));
                         break;
                     case 'up':
-                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y + 5, 0, -1, this, 1));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 + 5, 0, -1, this, 2));
                         break;
                     case 'down':
-                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y - 5, 0, 1, this, 1));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 - 5, 0, 1, this, 2));
                         break;
 
                 }

@@ -35,8 +35,9 @@ module LD29
             this.load.spritesheet("content-graphics-monsters-skeleton", "Content/Graphics/Monsters/Skelly.png", 32, 64);
 
             //load attack graphics
-            this.load.image("content-graphics-attacks-hitspotsword", "Content/Graphics/Attacks/HitSpotSword.png");
+            this.load.image("content-graphics-attacks-hitspotblades", "Content/Graphics/Attacks/HitSpotBlades.png");
             this.load.image("content-graphics-attacks-hitspotspell", "Content/Graphics/Attacks/HitSpotSpell.png");
+            this.load.image("content-graphics-attacks-hitspotacid", "Content/Graphics/Attacks/HitSpotAcid.png");
 
             //  Set-up our preloader sprite
             this.preloadBar = this.add.sprite((window.innerWidth / 2) - 200, (window.innerHeight / 2) - 20, 'content-graphics-PreLoader-ProgressBar');

@@ -10,11 +10,20 @@ module LD29
     {
         GameWorld: World;
         static GameHud: Hud;
-        Monsters: Characters.Monster[] = [];
+        static Monsters: Characters.Monster[] = [];
         GameCharacterBase: Characters.CharacterBase;
         static GameCharacter: Characters.Player;
-
         static PossibleSpawnNodes: Array<WalkingNode>;
+
+        static WaveTimer: number = 0;
+        static Stage: number = 0;
+        static State_WaveStart: number = 0;
+        static State_WaveActive: number = 1;
+        static State_WaveCoolDown: number = 2;
+
+        static WaveCount: number = 0;
+
+
 
         preload()
         {
@@ -115,30 +124,35 @@ module LD29
             ///
 
 
-            for (var x = 0; x < 20; x++)
+            GameState.GameHud = new Hud(this.game);
+            GameState.GameHud.CurretScore = 9001;
+        }
+
+        StartWave(difficulty: number)
+        {
+            for (var x = 0; x < difficulty; x++)
             {
                 this.SpawnMob("green_zombie");
                 this.SpawnMob("skeleton");
             }
-
-
-
-
-            GameState.GameHud = new Hud(this.game);
-            GameState.GameHud.FireInfoPopup("This is a test message");
-            GameState.GameHud.FireInfoPopup("And this is a second");
-            GameState.GameHud.FireInfoPopup("hello, how you doing ?");
-            GameState.GameHud.FireInfoPopup("time for cake");
-            GameState.GameHud.CurretScore = 9001;
         }
 
         SpawnMob(type: string)
         {
             var startPosition = GameState.PossibleSpawnNodes[this.game.rnd.integerInRange(0, GameState.PossibleSpawnNodes.length - 1)];
             var mob = new Characters.Monster(this.game, startPosition.X + this.game.rnd.integerInRange(-10, 10), startPosition.Y + this.game.rnd.integerInRange(-10, 10), type);
-            this.Monsters.push(mob);
+            GameState.Monsters.push(mob);
             this.GameWorld.AddCharacter(mob);
             mob.SetTarget(GameState.GameCharacter);
+        }
+
+        static MobKilled(mob: Characters.Monster)
+        {
+            var index = GameState.Monsters.indexOf((mob), 0);
+            if (index != null)
+            {
+                GameState.Monsters.splice(index, 1);
+            }
         }
 
         update()
@@ -146,7 +160,38 @@ module LD29
             this.GameWorld.Update();
             GameState.GameHud.Update();
             GameState.GameHud.CurretScore = this.game.rnd.realInRange(9001, 9005);
+            if (GameState.WaveTimer > 0)
+            {
+                GameState.WaveTimer--;
+                return;
+            }
+            switch (GameState.Stage)
+            {
+                case GameState.State_WaveStart:
+                    GameState.WaveCount++;
+                    GameState.GameHud.FireInfoPopup("Wave " + GameState.WaveCount + " Begins");
+                    this.StartWave(5);
+                    GameState.Stage = GameState.State_WaveActive;
+                    break;
+                case GameState.State_WaveActive:
+                    if (GameState.Monsters.length > 0)
+                    {
+                        GameState.WaveTimer = 10;
+                    } else
+                    {
+                        GameState.WaveTimer = 500;
+                        GameState.Stage = GameState.State_WaveCoolDown;
+                        GameState.GameHud.FireInfoPopup("Wave " + GameState.WaveCount + " Complete");
+                    }
 
+                    break;
+                case GameState.State_WaveCoolDown:
+
+                    GameState.WaveTimer = 200;
+                    GameState.Stage = GameState.State_WaveStart;
+                    break;
+
+            }
         }
 
         render()

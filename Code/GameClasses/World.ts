@@ -35,7 +35,7 @@ module LD29
             this.TheGame = game;
             this.CharactersInWorld = new Array<Characters.CharacterBase>();
             World.AttacksInWorld = new Array<DamageBox>();
-            World.WalkingNodes = Array < WalkingNode>();
+            World.WalkingNodes = Array<WalkingNode>();
             this.VisualSortGroup = game.add.group();
         }
         static GetClosestWalkingNode(x: number, y: number)
@@ -44,7 +44,7 @@ module LD29
             var BestDistance = 9999999;
             for (var i = 0; i < World.WalkingNodes.length; i++)
             {
-                var distance = Math.abs( World.WalkingNodes[i].X-x) + Math.abs( World.WalkingNodes[i].Y-y);
+                var distance = Math.abs(World.WalkingNodes[i].X - x) + Math.abs(World.WalkingNodes[i].Y - y);
                 if (distance < BestDistance)
                 {
                     BestDistance = distance;
@@ -55,7 +55,7 @@ module LD29
             return returnVar;
         }
 
-        AddWalkingNode(node : WalkingNode)
+        AddWalkingNode(node: WalkingNode)
         {
             World.WalkingNodes.push(node);
         }
@@ -68,6 +68,11 @@ module LD29
         }
         RemoveCharacter(character: Characters.CharacterBase)
         {
+            if(character == null) return;
+            if (character instanceof Characters.Monster)
+            {
+                GameState.MobKilled(<Characters.Monster>character);
+            }
             var index = this.CharactersInWorld.indexOf((character), 0);
             if (index != null)
             {
@@ -81,6 +86,7 @@ module LD29
         }
         static RemoveAttack(attack: DamageBox)
         {
+            if (attack == null) return;
             var index = World.AttacksInWorld.indexOf((attack), 0);
             if (index != null)
             {
@@ -139,14 +145,14 @@ module LD29
             if (obj1 == null || obj2 == null) return;
             if (obj1 instanceof DamageBox)
             {
-                  (<Characters.CharacterBase>obj2).Hit((<DamageBox>obj1).Strength);
-                if ((<DamageBox>obj1).DieOnHit)World.RemoveAttack(<DamageBox>obj1);
+                (<Characters.CharacterBase>obj2).Hit((<DamageBox>obj1).Strength);
+                if ((<DamageBox>obj1).DieOnHit) World.RemoveAttack(<DamageBox>obj1);
                 return;
             }
             if (obj2 instanceof DamageBox)
             {
-                 (<Characters.CharacterBase>obj1).Hit((<DamageBox>obj2).Strength);
-                if ((<DamageBox>obj1).DieOnHit)World.RemoveAttack(<DamageBox>obj2);
+                (<Characters.CharacterBase>obj1).Hit((<DamageBox>obj2).Strength);
+                if ((<DamageBox>obj1).DieOnHit) World.RemoveAttack(<DamageBox>obj2);
                 return;
             }
         }
