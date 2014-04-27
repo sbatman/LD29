@@ -6,6 +6,7 @@ module LD29.Characters {
             super(game, x, y, image);
             this.MaxHealth = 100;
             this.Health = this.MaxHealth;
+            game.camera.follow(this);
         }
 
 
