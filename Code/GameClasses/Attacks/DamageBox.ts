@@ -4,8 +4,9 @@
     {
         RemainingTime: number;
         Strength: number;
+        Owner: Characters.CharacterBase;
 
-        constructor(game: Phaser.Game, x: number, y: number, velox: number, veloy: number)
+        constructor(game: Phaser.Game, x: number, y: number, velox: number, veloy: number, owner: Characters.CharacterBase)
         {
             super(game, x, y, "content-graphics-attacks-hitspot", 0);
             game.physics.enable(this);
@@ -14,6 +15,7 @@
             this.body.velocity.x = velox;
             this.body.velocity.y = veloy;
             game.add.existing(this);
+            this.Owner = owner
         }
         update()
         {

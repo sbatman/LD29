@@ -91,22 +91,35 @@ module LD29
                 }
                 for (var c = 0; c < this.CharactersInWorld.length; c++)
                 {
-                    this.TheGame.physics.arcade.collide(this.CharactersInWorld[c], World.AttacksInWorld[i], this.CharacterHitByAttack);
+                    this.TheGame.physics.arcade.collide(this.CharactersInWorld[c], World.AttacksInWorld[i], this.CharacterHitByAttack, this.CheckAttackOwnbership);
                 }
             }
         }
+        CheckAttackOwnbership(obj1, obj2)
+        {
+            if (obj1 instanceof DamageBox)
+            {
+                if ((<DamageBox>obj1).Owner == obj2) return false;
+            }
+            if (obj2 instanceof DamageBox)
+            {
+                if ((<DamageBox>obj2).Owner == obj1) return false;
+            }
+            return true;
+        }
+
         CharacterHitByAttack(obj1, obj2)
         {
             if (obj1 == null || obj2 == null) return;
             if (obj1 instanceof DamageBox)
             {
-                (<Characters.CharacterBase>obj2).Hit((<DamageBox>obj1).Strength);
+                  (<Characters.CharacterBase>obj2).Hit((<DamageBox>obj1).Strength);
                 World.RemoveAttack(<DamageBox>obj1);
                 return;
             }
             if (obj2 instanceof DamageBox)
             {
-                (<Characters.CharacterBase>obj1).Hit((<DamageBox>obj2).Strength);
+                 (<Characters.CharacterBase>obj1).Hit((<DamageBox>obj2).Strength);
                 World.RemoveAttack(<DamageBox>obj2);
                 return;
             }
