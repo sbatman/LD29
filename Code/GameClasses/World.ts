@@ -31,7 +31,7 @@ module LD29
             this.MasterMap.setCollision(59);
             this.MasterMap.setCollision(80);
             this.MasterMap.setCollision(72);
-            this.MasterMap_L1.debug = true;
+          //  this.MasterMap_L1.debug = true;
             this.TheGame = game;
             this.CharactersInWorld = new Array<Characters.CharacterBase>();
             World.AttacksInWorld = new Array<DamageBox>();

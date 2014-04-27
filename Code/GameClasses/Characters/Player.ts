@@ -20,13 +20,13 @@ module LD29.Characters
 
         update()
         {
-          
-            if(this.Mana < this.MaxMana) this.Mana += 0.05;
+
+            if (this.Mana < this.MaxMana) this.Mana += 0.05;
             GameState.GameHud.CurrentHP = (this.Health / this.MaxHealth) * 10;
             GameState.GameHud.CurrentMP = (this.Mana / this.MaxMana) * 10;
             if (this.CanAttackCounterSkill1 > 0) this.CanAttackCounterSkill1--;
             if (this.CanAttackCounterSkill2 > 0) this.CanAttackCounterSkill2--;
-            
+
         }
 
         Heal()
@@ -86,44 +86,44 @@ module LD29.Characters
             {
                 this.animations.paused = true;
             }
-            
+
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.ONE) && this.CanAttackCounterSkill1 == 0)
             {
                 this.CanAttackCounterSkill1 = 40;
                 switch (this.facing)
                 {
                     case 'left':
-                        World.AddAttack(new DamageBox(this.game, this.body.x + 8 + 5, this.body.y + 8, -1, 0,this,0));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8 + 5, this.body.y + 8, -1, 0, this, 0, 1, 1 + (GameState.PlayerLevel * 0.1)));
                         break;
                     case 'right':
-                        World.AddAttack(new DamageBox(this.game, this.body.x + 8 - 5, this.body.y + 8, 1, 0, this, 0));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8 - 5, this.body.y + 8, 1, 0, this, 0, 1, 1 + (GameState.PlayerLevel * 0.1)));
                         break;
                     case 'up':
-                        World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8+ 5, 0, -1, this, 0));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 + 5, 0, -1, this, 0, 1, 1 + (GameState.PlayerLevel * 0.1)));
                         break;
                     case 'down':
-                        World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 - 5, 0, 1, this, 0));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 - 5, 0, 1, this, 0, 1, 1 + (GameState.PlayerLevel * 0.1)));
                         break;
 
                 }
             }
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.TWO) && this.CanAttackCounterSkill2 == 0 && this.Mana>30)
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.TWO) && this.CanAttackCounterSkill2 == 0 && this.Mana > 30)
             {
                 this.Mana -= 30;
                 this.CanAttackCounterSkill2 = 100;
                 switch (this.facing)
                 {
                     case 'left':
-                        World.AddAttack(new DamageBox(this.game, this.body.x + 8 + 5, this.body.y + 8, -1, 0, this, 1));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8 + 5, this.body.y + 8, -1, 0, this, 1, 1, 1 + (GameState.PlayerLevel * 0.1)));
                         break;
                     case 'right':
-                        World.AddAttack(new DamageBox(this.game, this.body.x + 8 - 5, this.body.y + 8, 1, 0, this, 1));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8 - 5, this.body.y + 8, 1, 0, this, 1, 1, 1 + (GameState.PlayerLevel * 0.1)));
                         break;
                     case 'up':
-                        World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 + 5, 0, -1, this, 1));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 + 5, 0, -1, this, 1, 1, 1 + (GameState.PlayerLevel * 0.1)));
                         break;
                     case 'down':
-                        World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 - 5, 0, 1, this, 1));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 - 5, 0, 1, this, 1, 1, 1 + (GameState.PlayerLevel * 0.1)));
                         break;
 
                 }

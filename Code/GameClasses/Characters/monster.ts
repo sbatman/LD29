@@ -90,16 +90,16 @@ module LD29.Characters
                         switch (this.facing)
                         {
                             case 'left':
-                                World.AddAttack(new DamageBox(this.game, this.body.x + 8 + 5, this.body.y + 8, -1, 0, this, this.PrimaryAttackType));
+                                World.AddAttack(new DamageBox(this.game, this.body.x + 8 + 5, this.body.y + 8, -1, 0, this, this.PrimaryAttackType,1.0+(0.1*GameState.WaveCount),1));
                                 break;
                             case 'right':
-                                World.AddAttack(new DamageBox(this.game, this.body.x + 8 - 5, this.body.y + 8, 1, 0, this, this.PrimaryAttackType));
+                                World.AddAttack(new DamageBox(this.game, this.body.x + 8 - 5, this.body.y + 8, 1, 0, this, this.PrimaryAttackType, 1.0 + (0.1 * GameState.WaveCount), 1));
                                 break;
                             case 'up':
-                                World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 + 5, 0, -1, this, this.PrimaryAttackType));
+                                World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 + 5, 0, -1, this, this.PrimaryAttackType, 1.0 + (0.1 * GameState.WaveCount), 1));
                                 break;
                             case 'down':
-                                World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 - 5, 0, 1, this, this.PrimaryAttackType));
+                                World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 - 5, 0, 1, this, this.PrimaryAttackType, 1.0 + (0.1 * GameState.WaveCount), 1));
                                 break;
 
                         }

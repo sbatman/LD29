@@ -43,7 +43,7 @@ module LD29
 
             GameState.CurrentScore = 0;
 
-            GameState.GameCharacter = new Characters.Player(this.game, 750, 600, 'content-graphics-monsters-gold_zombie');
+            GameState.GameCharacter = new Characters.Player(this.game, 1016, 819, 'content-graphics-monsters-gold_zombie');
 
             this.GameWorld.AddCharacter(GameState.GameCharacter);
 
@@ -130,7 +130,7 @@ module LD29
 
 
             GameState.GameHud = new Hud(this.game);
-            GameState.GameHud.CurretScore = 9001;
+            GameState.GameHud.CurretScore = 0;
         }
 
         StartWave(difficulty: number)
@@ -216,7 +216,7 @@ module LD29
                         GameState.GameCharacter.Heal();
                         GameState.GameHud.FireInfoPopup("Wave " + GameState.WaveCount + " Complete");
                         GameState.GameHud.CurretScore += 100 * GameState.WaveCount;
-                        GameState.PlayerXP += (100 * GameState.WaveCount) * GameState.GameCharacter.Health / GameState.GameCharacter.MaxHealth;
+                        GameState.PlayerXP += (100 * (GameState.WaveCount*0.8)) * GameState.GameCharacter.Health / GameState.GameCharacter.MaxHealth;
                     }
 
                     break;
@@ -231,8 +231,8 @@ module LD29
 
         render()
         {
-            this.game.debug.body(GameState.GameCharacter);
-            this.game.debug.bodyInfo(GameState.GameCharacter, 200, 200);
+          //  this.game.debug.body(GameState.GameCharacter);
+         //   this.game.debug.bodyInfo(GameState.GameCharacter, 200, 200);
         }
     }
 

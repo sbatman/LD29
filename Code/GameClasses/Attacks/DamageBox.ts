@@ -10,7 +10,7 @@
         TargetVeloX: number;
         TargetVeloY: number;
 
-        constructor(game: Phaser.Game, x: number, y: number, velox: number, veloy: number, owner: Characters.CharacterBase, type: number)
+        constructor(game: Phaser.Game, x: number, y: number, velox: number, veloy: number, owner: Characters.CharacterBase, type: number, rangeMultiplier : number, damageMultiplier : number)
         {
             super(game, x, y, DamageBox.GetGraphic(type), 0);
             game.physics.enable(this);
@@ -40,7 +40,7 @@
                     this.TargetVeloY = veloy * 50;
                     break;
                 case 2:
-                    this.Strength =0.2;
+                    this.Strength =2;
                     this.body.mass = 0;
                     this.RemainingTime = 180;
                     this.DieOnHit = true;
