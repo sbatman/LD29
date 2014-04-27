@@ -20,7 +20,7 @@
 
             game.physics.enable(this);
             this.body.height = 20;
-            this.body.width = 26;
+            this.body.width = 20;
         }
 
         //MovementUpdate() {
