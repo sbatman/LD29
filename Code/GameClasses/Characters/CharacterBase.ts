@@ -19,7 +19,7 @@
             this.animations.add('up', [9, 10, 11], 10, true);
 
             game.physics.enable(this);
-            this.body.height = 26;
+            this.body.height = 20;
             this.body.width = 26;
         }
 
