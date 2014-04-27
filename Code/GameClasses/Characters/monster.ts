@@ -43,11 +43,18 @@ module LD29.Characters
                 if (distance > 300)
                 {
                     this.CurrentTarget = null;
-                    var distanceFromNode = Math.abs(this.CurrentWalkingNode.X - this.x) + Math.abs(this.CurrentWalkingNode.Y - this.y);
-                    if (distanceFromNode > 100)
+                    if (this.CurrentWalkingNode == null)
                     {
                         this.CurrentWalkingNode = World.GetClosestWalkingNode(this.x, this.y);
+                    } else
+                    {
+                        var distanceFromNode = Math.abs(this.CurrentWalkingNode.X - this.x) + Math.abs(this.CurrentWalkingNode.Y - this.y);
+                        if (distanceFromNode > 100)
+                        {
+                            this.CurrentWalkingNode = World.GetClosestWalkingNode(this.x, this.y);
+                        }
                     }
+
                 }
                 else if (distance < 50)
                 {

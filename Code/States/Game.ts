@@ -23,8 +23,12 @@ module LD29
         {
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
             this.GameWorld = new World(this.game);
-            this.Monsters.push(new Characters.Monster(this.game, 81, 181, 'content-graphics-monsters-skeleton'));
-            this.Monsters.push(new Characters.Monster(this.game, 81, 131, 'content-graphics-monsters-green_zombie'));
+            this.Monsters.push(new Characters.Monster(this.game, 1476, 20, 'content-graphics-monsters-skeleton'));
+            this.Monsters.push(new Characters.Monster(this.game, 1473, 21, 'content-graphics-monsters-green_zombie'));
+            this.Monsters.push(new Characters.Monster(this.game, 1476, 22, 'content-graphics-monsters-skeleton'));
+            this.Monsters.push(new Characters.Monster(this.game, 1473, 23, 'content-graphics-monsters-green_zombie'));
+            this.Monsters.push(new Characters.Monster(this.game, 1476, 24, 'content-graphics-monsters-skeleton'));
+            this.Monsters.push(new Characters.Monster(this.game, 1473, 25, 'content-graphics-monsters-green_zombie'));
 
             GameState.GameCharacter = new Characters.Player(this.game, 750, 600, 'content-graphics-monsters-gold_zombie');
 
@@ -41,23 +45,44 @@ module LD29
 
             //Walking Nodes
 
-            var n1 = new WalkingNode(null, null, 1016, 819);
-            var n2 = new WalkingNode(n1, null, 634, 825);
-            var n3 = new WalkingNode(n2, null, 551, 631);
-            var n4 = new WalkingNode(n3, null, 518, 219);
-            var n5 = new WalkingNode(n4, null, 332, 219);
-            var n6 = new WalkingNode(n5, null, 81, 171);
+            var Center = new WalkingNode(null, null, 1016, 819);
+            var na2 = new WalkingNode(Center, null, 634, 825);
+            var na3 = new WalkingNode(na2, null, 551, 631);
+            var na4 = new WalkingNode(na3, null, 518, 219);
+            var na5 = new WalkingNode(na4, null, 332, 219);
+            var na6 = new WalkingNode(na5, null, 81, 171);
 
-            this.GameWorld.AddWalkingNode(n1);
-            this.GameWorld.AddWalkingNode(n2);
-            this.GameWorld.AddWalkingNode(n3);
-            this.GameWorld.AddWalkingNode(n4);
-            this.GameWorld.AddWalkingNode(n5);
-            this.GameWorld.AddWalkingNode(n6);
+
+            var nc1 = new WalkingNode(na4, null, 679, 252);
+            var nc2 = new WalkingNode(nc1, null, 1223, 252);
+
+
+            var nb2 = new WalkingNode(Center, null, 1301, 699);
+            var nb3 = new WalkingNode(nb2, null, 1568, 699);
+            var nb4 = new WalkingNode(nb3, null, 1551, 364);
+            var nb5 = new WalkingNode(nb4, nc2, 1496, 232);
+            var nb6 = new WalkingNode(nb5, null, 1496, 15);
+
+          ;
+
+            this.GameWorld.AddWalkingNode(Center);
+            this.GameWorld.AddWalkingNode(na2);
+            this.GameWorld.AddWalkingNode(na3);
+            this.GameWorld.AddWalkingNode(na4);
+            this.GameWorld.AddWalkingNode(na5);
+            this.GameWorld.AddWalkingNode(na6);
+
+            this.GameWorld.AddWalkingNode(nb2);
+            this.GameWorld.AddWalkingNode(nb3);
+            this.GameWorld.AddWalkingNode(nb4);
+            this.GameWorld.AddWalkingNode(nb5);
+            this.GameWorld.AddWalkingNode(nb6);
+
+            this.GameWorld.AddWalkingNode(nc1);
+            this.GameWorld.AddWalkingNode(nc2);
             ///
 
-            this.Monsters[0].SetWalkingNode(n6);
-            this.Monsters[1].SetWalkingNode(n6);
+          
 
             GameState.GameHud = new Hud(this.game);
             GameState.GameHud.FireInfoPopup("This is a test message");
