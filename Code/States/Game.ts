@@ -21,17 +21,18 @@ module LD29
 
         create()
         {
-            this.game.physics.startSystem(Phaser.Physics.ARCADE);           
+            this.game.physics.startSystem(Phaser.Physics.ARCADE);
             this.GameWorld = new World(this.game);
 
             this.Monsters.push(new Characters.Monster(this.game, 400, 500, 'content-graphics-monsters-skeleton'));
             this.Monsters.push(new Characters.Monster(this.game, 100, 100, 'content-graphics-monsters-green_zombie'));
 
-            this.GameCharacter = new Characters.Player(this.game, 750, 600,'content-graphics-monsters-gold_zombie');
-     
+            this.GameCharacter = new Characters.Player(this.game, 750, 600, 'content-graphics-monsters-gold_zombie');
+
             this.GameWorld.AddCharacter(this.GameCharacter);
 
-            for (var i = 0; i < this.Monsters.length; i++) {
+            for (var i = 0; i < this.Monsters.length; i++)
+            {
                 this.GameWorld.AddCharacter(this.Monsters[i]);
             }
             for (var i = 0; i < this.Monsters.length; i++)
@@ -50,7 +51,7 @@ module LD29
         {
             this.GameWorld.Update();
             GameState.GameHud.Update();
-            GameState.GameHud.CurretScore = this.game.rnd.realInRange(9001, 9005);            
+            GameState.GameHud.CurretScore = this.game.rnd.realInRange(9001, 9005);
         }
     }
 

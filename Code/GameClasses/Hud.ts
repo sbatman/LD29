@@ -84,7 +84,7 @@ module LD29
             }
             this.InfoPopUpGraphic.fixedToCamera = false;
             this.InfoPopUpGraphic.x = (this.TheGame.canvas.width * 0.5) - (this.InfoPopUpGraphic.width * 0.5);
-            this.InfoPopUpGraphic.y = (this.TheGame.canvas.height * 0.5) - (this.InfoPopUpGraphic.height)-200;
+            this.InfoPopUpGraphic.y = (this.TheGame.canvas.height * 0.5) - (this.InfoPopUpGraphic.height) - 200;
             this.InfoPopUpGraphic.fixedToCamera = true;
             this.InfoPopUpText.fixedToCamera = false;
             this.InfoPopUpText.text = message;
@@ -135,7 +135,7 @@ module LD29
 
                 for (var i = 0; i < this.CurrentHP; i++)
                 {
-                    var s = new Phaser.Sprite(this.TheGame, this.StatsBlobTargetX  + 84 + (8 * i), this.StatsBlobTargetY + 6, "content-graphics-hud-redsegment");
+                    var s = new Phaser.Sprite(this.TheGame, this.StatsBlobTargetX + 84 + (8 * i), this.StatsBlobTargetY + 6, "content-graphics-hud-redsegment");
                     s.fixedToCamera = true;
                     this.HPBarSprites.push(s);
                     this.TheGame.add.existing(s);
@@ -149,7 +149,7 @@ module LD29
 
                 for (var i = 0; i < this.CurrentMP; i++)
                 {
-                    var s = new Phaser.Sprite(this.TheGame, this.StatsBlobTargetX  + 84 + (8 * i), this.StatsBlobTargetY + 26, "content-graphics-hud-bluesegment");
+                    var s = new Phaser.Sprite(this.TheGame, this.StatsBlobTargetX + 84 + (8 * i), this.StatsBlobTargetY + 26, "content-graphics-hud-bluesegment");
                     s.fixedToCamera = true;
                     this.MPBarSprites.push(s);
                     this.TheGame.add.existing(s);
@@ -163,7 +163,7 @@ module LD29
 
                 for (var i = 0; i < this.CurrentXP; i++)
                 {
-                    var s = new Phaser.Sprite(this.TheGame, this.StatsBlobTargetX  + 84 + (8 * i), this.StatsBlobTargetY + 46, "content-graphics-hud-greensegment");
+                    var s = new Phaser.Sprite(this.TheGame, this.StatsBlobTargetX + 84 + (8 * i), this.StatsBlobTargetY + 46, "content-graphics-hud-greensegment");
                     s.fixedToCamera = true;
                     this.XPBarSprites.push(s);
                     this.TheGame.add.existing(s);

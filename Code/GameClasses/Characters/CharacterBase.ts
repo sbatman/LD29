@@ -1,4 +1,5 @@
-﻿module LD29.Characters {
+﻿module LD29.Characters
+{
     export class CharacterBase extends Phaser.Sprite
     {
 
@@ -7,8 +8,9 @@
         facing: string;
         MaxHealth: number;
         Health: number;
-        
-        constructor(game: Phaser.Game, x: number, y: number, image: string) {
+
+        constructor(game: Phaser.Game, x: number, y: number, image: string)
+        {
             super(game, x, y, image, 0);
 
             this.anchor.setTo(0.5, 1);
@@ -42,7 +44,7 @@
         {
         }
 
-        MovementUpdate() {}
+        MovementUpdate() { }
 
     }
 } 

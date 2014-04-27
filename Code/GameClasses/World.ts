@@ -49,7 +49,7 @@ module LD29
             }
             character.destroy();
         }
-        static AddAttack(attack : DamageBox)
+        static AddAttack(attack: DamageBox)
         {
             World.AttacksInWorld.push(attack);
         }
@@ -80,7 +80,7 @@ module LD29
                 this.TheGame.physics.arcade.collide(character, this.MasterMap_L1);
             }
 
-            for (var i = World.AttacksInWorld.length-1; i >= 0; i--)
+            for (var i = World.AttacksInWorld.length - 1; i >= 0; i--)
             {
                 var attack = World.AttacksInWorld[i];
                 attack.update();
@@ -89,7 +89,7 @@ module LD29
                     World.RemoveAttack(attack);
                     continue;
                 }
-                for (var c = 0; c< this.CharactersInWorld.length; c++)
+                for (var c = 0; c < this.CharactersInWorld.length; c++)
                 {
                     this.TheGame.physics.arcade.collide(this.CharactersInWorld[c], World.AttacksInWorld[i], this.CharacterHitByAttack);
                 }
@@ -99,7 +99,7 @@ module LD29
         {
             if (obj1 == null || obj2 == null) return;
             if (obj1 instanceof DamageBox)
-            {               
+            {
                 (<Characters.CharacterBase>obj2).Hit((<DamageBox>obj1).Strength);
                 World.RemoveAttack(<DamageBox>obj1);
                 return;
