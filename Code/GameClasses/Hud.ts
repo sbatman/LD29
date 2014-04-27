@@ -128,9 +128,9 @@ module LD29
                 }
             }
 
-            if (this.CurrentHP != this.LastHP)
+            if (Math.round(this.CurrentHP) != this.LastHP)
             {
-                this.LastHP = this.CurrentHP;
+                this.LastHP = Math.round(this.CurrentHP);
                 for (var i = 0; i < this.HPBarSprites.length; i++)  this.HPBarSprites[i].destroy();
 
                 for (var i = 0; i < this.CurrentHP; i++)
@@ -142,9 +142,9 @@ module LD29
                 }
 
             }
-            if (this.CurrentMP != this.LastMP)
+            if (Math.round(this.CurrentMP) != this.LastMP)
             {
-                this.LastMP = this.CurrentMP;
+                this.LastMP = Math.round(this.CurrentMP);
                 for (var i = 0; i < this.MPBarSprites.length; i++)  this.MPBarSprites[i].destroy();
 
                 for (var i = 0; i < this.CurrentMP; i++)
@@ -156,9 +156,9 @@ module LD29
                 }
 
             }
-            if (this.CurrentXP != this.LastXP)
+            if (Math.round(this.CurrentXP) != this.LastXP)
             {
-                this.LastXP = this.CurrentXP;
+                this.LastXP = Math.round(this.CurrentXP);
                 for (var i = 0; i < this.XPBarSprites.length; i++)  this.XPBarSprites[i].destroy();
 
                 for (var i = 0; i < this.CurrentXP; i++)

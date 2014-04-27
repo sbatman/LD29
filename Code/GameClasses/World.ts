@@ -152,7 +152,7 @@ module LD29
             if (obj2 instanceof DamageBox)
             {
                 (<Characters.CharacterBase>obj1).Hit((<DamageBox>obj2).Strength);
-                if ((<DamageBox>obj1).DieOnHit) World.RemoveAttack(<DamageBox>obj2);
+                if ((<DamageBox>obj2).DieOnHit) World.RemoveAttack(<DamageBox>obj2);
                 return;
             }
         }

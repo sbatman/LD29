@@ -15,6 +15,8 @@ module LD29
         static GameCharacter: Characters.Player;
         static PossibleSpawnNodes: Array<WalkingNode>;
 
+        static CurrentScore: number;
+
         static WaveTimer: number = 0;
         static Stage: number = 0;
         static State_WaveStart: number = 0;
@@ -22,8 +24,11 @@ module LD29
         static State_WaveCoolDown: number = 2;
 
         static WaveCount: number = 0;
+        static SpawnCountRemaining: number = 0;
 
-
+        static PlayerXP: number = 0;
+        static PlayerLevel: number = 1;
+        static PlayerXPToLevel: number = 200;
 
         preload()
         {
@@ -36,7 +41,7 @@ module LD29
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
             this.GameWorld = new World(this.game);
 
-
+            GameState.CurrentScore = 0;
 
             GameState.GameCharacter = new Characters.Player(this.game, 750, 600, 'content-graphics-monsters-gold_zombie');
 
@@ -63,7 +68,7 @@ module LD29
             var nb2 = new WalkingNode(Center, null, 1301, 699);
             var nb3 = new WalkingNode(nb2, null, 1568, 699);
             var nb4 = new WalkingNode(nb3, null, 1551, 364);
-            var nb5 = new WalkingNode(nb4, nc2, 1496, 232);
+            var nb5 = new WalkingNode(nb4, nc2, 1486, 232);
             var nb6 = new WalkingNode(nb5, null, 1496, 15);
 
             var ne2 = new WalkingNode(nd2, null, 1000, 1124);
@@ -130,11 +135,8 @@ module LD29
 
         StartWave(difficulty: number)
         {
-            for (var x = 0; x < difficulty; x++)
-            {
-                this.SpawnMob("green_zombie");
-                this.SpawnMob("skeleton");
-            }
+            GameState.SpawnCountRemaining = difficulty;
+
         }
 
         SpawnMob(type: string)
@@ -148,6 +150,15 @@ module LD29
 
         static MobKilled(mob: Characters.Monster)
         {
+            var value = 0;
+            switch (mob.Type)
+            {
+                case "green_zombie": value = 6; break;
+                case "skeleton": value = 8; break;
+            }
+            GameState.CurrentScore += value;
+            GameState.GameHud.CurretScore = GameState.CurrentScore;
+            GameState.PlayerXP += value * GameState.GameCharacter.Health / GameState.GameCharacter.MaxHealth;
             var index = GameState.Monsters.indexOf((mob), 0);
             if (index != null)
             {
@@ -158,8 +169,19 @@ module LD29
         update()
         {
             this.GameWorld.Update();
+
+            if (GameState.PlayerXP >= GameState.PlayerXPToLevel)
+            {
+                GameState.PlayerXP -= GameState.PlayerXPToLevel;
+                GameState.PlayerLevel++;
+                GameState.PlayerXPToLevel *= 1.1;
+                GameState.GameHud.FireInfoPopup("You are now level " + GameState.PlayerLevel);
+            }
+            
+            GameState.GameHud.CurrentXP = (GameState.PlayerXP / GameState.PlayerXPToLevel)*10;
+
             GameState.GameHud.Update();
-            GameState.GameHud.CurretScore = this.game.rnd.realInRange(9001, 9005);
+
             if (GameState.WaveTimer > 0)
             {
                 GameState.WaveTimer--;
@@ -170,18 +192,31 @@ module LD29
                 case GameState.State_WaveStart:
                     GameState.WaveCount++;
                     GameState.GameHud.FireInfoPopup("Wave " + GameState.WaveCount + " Begins");
-                    this.StartWave(5);
+                    this.StartWave(5 + (GameState.WaveCount * 2));
                     GameState.Stage = GameState.State_WaveActive;
                     break;
                 case GameState.State_WaveActive:
-                    if (GameState.Monsters.length > 0)
+                    if (GameState.Monsters.length > 0 || GameState.SpawnCountRemaining > 0)
                     {
-                        GameState.WaveTimer = 10;
+                        GameState.WaveTimer = 20;
+                        if (GameState.SpawnCountRemaining > 0)
+                        {
+                            GameState.SpawnCountRemaining--;
+                            switch (this.game.rnd.integerInRange(0, 1))
+                            {
+                                case 0: this.SpawnMob("green_zombie"); break;
+                                case 1: this.SpawnMob("skeleton"); break;
+                            }
+                        }
+
                     } else
                     {
                         GameState.WaveTimer = 500;
                         GameState.Stage = GameState.State_WaveCoolDown;
+                        GameState.GameCharacter.Heal();
                         GameState.GameHud.FireInfoPopup("Wave " + GameState.WaveCount + " Complete");
+                        GameState.GameHud.CurretScore += 100 * GameState.WaveCount;
+                        GameState.PlayerXP += (100 * GameState.WaveCount) * GameState.GameCharacter.Health / GameState.GameCharacter.MaxHealth;
                     }
 
                     break;

@@ -25,26 +25,27 @@
             {
                 case 0:
                     this.Strength = 1;
-                    this.body.mass = 30;
-                    this.RemainingTime = 30;
+                    this.body.mass = 10;
+                    this.RemainingTime = 100;
                     this.DieOnHit = true;
-                    this.TargetVeloX = velox * 200;
-                    this.TargetVeloY = veloy * 200;
+                    this.TargetVeloX = velox * 190;
+                    this.TargetVeloY = veloy * 190;
                     break;
                 case 1:
-                    this.Strength = 0.01;
+                    this.Strength = 0.1;
                     this.body.mass = 10;
+                    this.DieOnHit = false;
                     this.RemainingTime = 350;
                     this.TargetVeloX = velox * 50;
                     this.TargetVeloY = veloy * 50;
                     break;
                 case 2:
-                    this.Strength = 1;
-                    this.body.mass = 30;
-                    this.RemainingTime = 150;
+                    this.Strength =0.2;
+                    this.body.mass = 0;
+                    this.RemainingTime = 180;
                     this.DieOnHit = true;
-                    this.TargetVeloX = velox * 25;
-                    this.TargetVeloY = veloy * 25;
+                    this.TargetVeloX = velox * 35;
+                    this.TargetVeloY = veloy * 35;
                     break;
             }
         }

@@ -3,11 +3,14 @@ module LD29.Characters
 {
     export class Monster extends CharacterBase
     {
+        CanAttackCounterSkill1: number;
         CurrentTarget: Characters.CharacterBase;
         CurrentWalkingNode: WalkingNode;
         CheckForPlayerInterval: number;
         MaxSpeed: number;
         Type: string;
+        PrimaryAttackType: number;
+        PreferedPoximity: number;
 
         constructor(game: Phaser.Game, x: number, y: number, type: string)
         {
@@ -15,17 +18,34 @@ module LD29.Characters
 
             this.animations.play('down');
             this.animations.paused = true;
-            this.MaxSpeed = 85 + game.rnd.realInRange(0,3);
-            this.MaxHealth = 16;
-            this.Health = 16;
+
+
+            this.Health = 16 + game.rnd.realInRange(0, 5);
             this.CheckForPlayerInterval = 40;
             this.Type = type;
+            this.CanAttackCounterSkill1 = 0;
+            switch (type)
+            {
+                case "green_zombie":
+                    this.PrimaryAttackType = 2;
+                    this.PreferedPoximity = 60;
+                    this.MaxHealth = 8 + GameState.WaveCount;
+                    this.MaxSpeed = 40 + game.rnd.realInRange(0, 28);
+                    break;
+                case "skeleton":
+                    this.PrimaryAttackType = 0;
+                    this.PreferedPoximity = 80;
+                    this.MaxHealth = 4 + GameState.WaveCount;
+                    this.MaxSpeed = 50 + game.rnd.realInRange(0, 18);
+                    break;
+            }
         }
 
 
 
         MovementUpdate()
         {
+            if (this.CanAttackCounterSkill1 > 0) this.CanAttackCounterSkill1--;
             this.CheckForPlayerInterval--;
             if (this.CheckForPlayerInterval <= 0)
             {
@@ -60,10 +80,30 @@ module LD29.Characters
                     }
 
                 }
-                else if (distance < 50)
+                else if (distance < this.PreferedPoximity)
                 {
                     velX = 0;
                     velY = 0;
+                    if (this.CanAttackCounterSkill1 == 0)
+                    {
+                        this.CanAttackCounterSkill1 = 100;
+                        switch (this.facing)
+                        {
+                            case 'left':
+                                World.AddAttack(new DamageBox(this.game, this.body.x + 8 + 5, this.body.y + 8, -1, 0, this, this.PrimaryAttackType));
+                                break;
+                            case 'right':
+                                World.AddAttack(new DamageBox(this.game, this.body.x + 8 - 5, this.body.y + 8, 1, 0, this, this.PrimaryAttackType));
+                                break;
+                            case 'up':
+                                World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 + 5, 0, -1, this, this.PrimaryAttackType));
+                                break;
+                            case 'down':
+                                World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 - 5, 0, 1, this, this.PrimaryAttackType));
+                                break;
+
+                        }
+                    }
                 }
             }
             else if (this.CurrentWalkingNode != null)

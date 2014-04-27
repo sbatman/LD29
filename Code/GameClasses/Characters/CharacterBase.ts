@@ -8,6 +8,8 @@
         facing: string;
         MaxHealth: number;
         Health: number;
+        MaxMana: number;
+        Mana: number;
 
         constructor(game: Phaser.Game, x: number, y: number, image: string)
         {
