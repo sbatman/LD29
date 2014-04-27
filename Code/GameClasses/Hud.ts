@@ -12,16 +12,17 @@ module LD29
         MPBarSprites: Array<Phaser.Sprite>;
         XPBarSprites: Array<Phaser.Sprite>;
 
-        CurrentHP: number;
-        CurrentMP: number;
-        CurrentXP: number;
+        CurrentHP: number = 0;
+        CurrentMP: number = 0;
+        CurrentXP: number = 0;
+        CurretScore: number = 0;
+        CurrentLevel: number = 0;
 
-        CurretScore: number;
-
-        private LastHP: number;
-        private LastMP: number;
-        private LastXP: number;
-        private LastScore: number;
+        private LastHP: number = 0;
+        private LastMP: number = 0;
+        private LastXP: number = 0;
+        private LastScore: number = 0;
+        private LastLevel: number = 0;
 
         private TheGame: Phaser.Game; // you have just lost this <<<<< :D
 
@@ -36,6 +37,8 @@ module LD29
         private StatsBlobTargetY: number;
         private StatsBlobTargetX: number;
 
+        private LevelText: Phaser.Text;
+
         constructor(game: Phaser.Game)
         {
             this.BackgroundSprite = new Phaser.Sprite(game, 0, 0, "content-graphics-hud-statsblob");
@@ -44,15 +47,6 @@ module LD29
             this.StatsBlobTargetX = 0;
             this.BackgroundSprite.y = this.StatsBlobTargetY;
             this.BackgroundSprite.fixedToCamera = true;
-
-            this.LastHP = 0;
-            this.LastMP = 0;
-            this.LastXP = 0;
-            this.LastScore = 0;
-            this.CurrentHP = 0;
-            this.CurrentMP = 0;
-            this.CurrentXP = 0;
-            this.CurretScore = 0;
             this.HPBarSprites = new Array<Phaser.Sprite>();
             this.MPBarSprites = new Array<Phaser.Sprite>();
             this.XPBarSprites = new Array<Phaser.Sprite>();
@@ -71,8 +65,12 @@ module LD29
             this.ScoreBarGraphic = new Phaser.Sprite(game, 0, 0, "content-graphics-hud-scorebar");
             this.ScoreBarGraphic.fixedToCamera = true;
             game.add.existing(this.ScoreBarGraphic);
-            this.ScoreBarText = this.TheGame.add.text(2, 2, "", { font: "20px Arial", fill: "#DAD45E", stroke: '#000000', strokeThickness: 3 });
+            this.ScoreBarText = this.TheGame.add.text(6, 2, "", { font: "20px Arial", fill: "#DAD45E", stroke: '#000000', strokeThickness: 3 });
             this.ScoreBarText.fixedToCamera = true;
+            this.ScoreBarText.text = "Score: 0";
+
+            this.LevelText = this.TheGame.add.text(this.StatsBlobTargetX+18, this.StatsBlobTargetY+10, "1", { font: "35px Arial", fill: "#DAD45E", stroke: '#000000', strokeThickness: 3 });
+            this.LevelText.fixedToCamera = true;
         }
 
         FireInfoPopup(message: string)
@@ -113,6 +111,11 @@ module LD29
 
         Update()
         {
+            if (this.CurrentLevel != this.LastLevel)
+            {
+                this.LastLevel = this.CurrentLevel;
+                this.LevelText.text = "" + this.CurrentLevel;
+            }
             if (this.CurretScore != this.LastScore)
             {
                 this.LastScore = this.CurretScore;

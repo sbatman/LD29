@@ -18,10 +18,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.css" />
+    <Content Include="Content\Audio\MainTheme.mp3" />
     <Content Include="Content\GetSource.png" />
     <Content Include="Content\Graphics\Attacks\HitSpotAcid.png" />
     <Content Include="Content\Graphics\Attacks\HitSpotBlades.png" />
+    <Content Include="Content\Graphics\Attacks\HitSpotDarkSpell.png" />
     <Content Include="Content\Graphics\Attacks\HitSpotSpell.png" />
+    <Content Include="Content\Graphics\GameOver.jpg" />
     <Content Include="Content\Graphics\Hud\BlueSegment.png" />
     <Content Include="Content\Graphics\Hud\GreenSegment.png" />
     <Content Include="Content\Graphics\Hud\InfoPopup.png" />
@@ -31,7 +34,9 @@
     <Content Include="Content\Graphics\Monsters\GoldenZombie.png" />
     <Content Include="Content\Graphics\Monsters\GreenZombie.png" />
     <Content Include="Content\Graphics\Monsters\Skelly.png" />
+    <Content Include="Content\Graphics\Monsters\UndeadKing.png" />
     <Content Include="Content\Graphics\PreLoader\ProgressBar.jpg" />
+    <Content Include="Content\Graphics\Title.jpg" />
     <Content Include="Content\Graphics\World\DungeonTilesPrimary.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -58,13 +63,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </TypeScriptCompile>
     <TypeScriptCompile Include="States\Game.ts" />
+    <TypeScriptCompile Include="States\GameOver.ts" />
     <TypeScriptCompile Include="States\MainMenu.ts" />
     <TypeScriptCompile Include="States\Preloader.ts" />
     <TypeScriptCompile Include="States\Boot.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\Audio\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="web.config" />
     <Content Include="Content\Data\World\Main2.csv">

@@ -28,7 +28,8 @@ module LD29
 
         static PlayerXP: number = 0;
         static PlayerLevel: number = 1;
-        static PlayerXPToLevel: number = 200;
+        static PlayerXPToLevel: number = 150;
+
 
         preload()
         {
@@ -80,7 +81,7 @@ module LD29
 
             var nf2 = new WalkingNode(ne3, null, 983, 1482);
             var nf3 = new WalkingNode(nf2, null, 1225, 1472);
-            var nf4 = new WalkingNode(nf3, null, 1386, 1481);
+            var nf4 = new WalkingNode(nf3, null, 1386, 1471);
             var nf5 = new WalkingNode(nf4, null, 1515, 1497);
             var nf6 = new WalkingNode(nf5, null, 1578, 1764);
             var nf7 = new WalkingNode(nf5, null, 1763, 1614);
@@ -131,6 +132,9 @@ module LD29
 
             GameState.GameHud = new Hud(this.game);
             GameState.GameHud.CurretScore = 0;
+            var text = new Phaser.Text(this.game, this.game.canvas.width * 0.5 - 160, this.game.canvas.height - 40, "Arrow keys to move, one and two to attack", { font: "18px Arial", fill: "#cccccc", stroke: '#000000', strokeThickness: 3 });
+            text.fixedToCamera = true;
+            this.game.add.existing(text);
         }
 
         StartWave(difficulty: number)
@@ -155,10 +159,11 @@ module LD29
             {
                 case "green_zombie": value = 6; break;
                 case "skeleton": value = 8; break;
+                case "undeadking": value = 20; break;
             }
             GameState.CurrentScore += value;
             GameState.GameHud.CurretScore = GameState.CurrentScore;
-            GameState.PlayerXP += value * GameState.GameCharacter.Health / GameState.GameCharacter.MaxHealth;
+            GameState.PlayerXP += (value * 3) * GameState.GameCharacter.Health / GameState.GameCharacter.MaxHealth;
             var index = GameState.Monsters.indexOf((mob), 0);
             if (index != null)
             {
@@ -168,17 +173,22 @@ module LD29
 
         update()
         {
+            if (GameState.GameCharacter == null || GameState.GameCharacter.Health <= 0)
+            {
+                this.game.state.start('GameOver', true, false);
+            }
             this.GameWorld.Update();
 
             if (GameState.PlayerXP >= GameState.PlayerXPToLevel)
             {
                 GameState.PlayerXP -= GameState.PlayerXPToLevel;
                 GameState.PlayerLevel++;
+                GameState.GameHud.CurrentLevel = GameState.PlayerLevel;
                 GameState.PlayerXPToLevel *= 1.1;
                 GameState.GameHud.FireInfoPopup("You are now level " + GameState.PlayerLevel);
             }
-            
-            GameState.GameHud.CurrentXP = (GameState.PlayerXP / GameState.PlayerXPToLevel)*10;
+
+            GameState.GameHud.CurrentXP = (GameState.PlayerXP / GameState.PlayerXPToLevel) * 10;
 
             GameState.GameHud.Update();
 
@@ -202,10 +212,11 @@ module LD29
                         if (GameState.SpawnCountRemaining > 0)
                         {
                             GameState.SpawnCountRemaining--;
-                            switch (this.game.rnd.integerInRange(0, 1))
+                            switch (this.game.rnd.integerInRange(0, 10))
                             {
-                                case 0: this.SpawnMob("green_zombie"); break;
-                                case 1: this.SpawnMob("skeleton"); break;
+                                case 0: case 1: case 2: case 3: case 4: this.SpawnMob("green_zombie"); break;
+                                case 5: case 6: case 7: case 8: this.SpawnMob("skeleton"); break;
+                                case 9: this.SpawnMob("undeadking"); break;
                             }
                         }
 
@@ -216,7 +227,7 @@ module LD29
                         GameState.GameCharacter.Heal();
                         GameState.GameHud.FireInfoPopup("Wave " + GameState.WaveCount + " Complete");
                         GameState.GameHud.CurretScore += 100 * GameState.WaveCount;
-                        GameState.PlayerXP += (100 * (GameState.WaveCount*0.8)) * GameState.GameCharacter.Health / GameState.GameCharacter.MaxHealth;
+                        GameState.PlayerXP += (100 * (GameState.WaveCount * 0.5)) * GameState.GameCharacter.Health / GameState.GameCharacter.MaxHealth;
                     }
 
                     break;
@@ -231,8 +242,8 @@ module LD29
 
         render()
         {
-          //  this.game.debug.body(GameState.GameCharacter);
-         //   this.game.debug.bodyInfo(GameState.GameCharacter, 200, 200);
+            //  this.game.debug.body(GameState.GameCharacter);
+            //   this.game.debug.bodyInfo(GameState.GameCharacter, 200, 200);
         }
     }
 

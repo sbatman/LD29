@@ -29,13 +29,19 @@ module LD29.Characters
                 case "green_zombie":
                     this.PrimaryAttackType = 2;
                     this.PreferedPoximity = 60;
-                    this.MaxHealth = 8 + GameState.WaveCount;
+                    this.MaxHealth = 4 + GameState.WaveCount;
                     this.MaxSpeed = 40 + game.rnd.realInRange(0, 28);
                     break;
                 case "skeleton":
                     this.PrimaryAttackType = 0;
                     this.PreferedPoximity = 80;
-                    this.MaxHealth = 4 + GameState.WaveCount;
+                    this.MaxHealth = 2 + GameState.WaveCount;
+                    this.MaxSpeed = 50 + game.rnd.realInRange(0, 18);
+                    break;
+                case "undeadking":
+                    this.PrimaryAttackType = 3;
+                    this.PreferedPoximity = 200;
+                    this.MaxHealth = 2 + GameState.WaveCount;
                     this.MaxSpeed = 50 + game.rnd.realInRange(0, 18);
                     break;
             }
@@ -86,22 +92,32 @@ module LD29.Characters
                     velY = 0;
                     if (this.CanAttackCounterSkill1 == 0)
                     {
-                        this.CanAttackCounterSkill1 = 100;
-                        switch (this.facing)
+                        for (var count = 0; count < (this.PrimaryAttackType==3?5:1); count++)
                         {
-                            case 'left':
-                                World.AddAttack(new DamageBox(this.game, this.body.x + 8 + 5, this.body.y + 8, -1, 0, this, this.PrimaryAttackType,1.0+(0.1*GameState.WaveCount),1));
-                                break;
-                            case 'right':
-                                World.AddAttack(new DamageBox(this.game, this.body.x + 8 - 5, this.body.y + 8, 1, 0, this, this.PrimaryAttackType, 1.0 + (0.1 * GameState.WaveCount), 1));
-                                break;
-                            case 'up':
-                                World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 + 5, 0, -1, this, this.PrimaryAttackType, 1.0 + (0.1 * GameState.WaveCount), 1));
-                                break;
-                            case 'down':
-                                World.AddAttack(new DamageBox(this.game, this.body.x + 8, this.body.y + 8 - 5, 0, 1, this, this.PrimaryAttackType, 1.0 + (0.1 * GameState.WaveCount), 1));
-                                break;
+                            var attack = null;
+                            this.CanAttackCounterSkill1 = 100;
+                            switch (this.facing)
+                            {
+                                case 'left':
+                                    attack = new DamageBox(this.game, this.body.x + 8 + 5, this.body.y + 8, -1, 0, this, this.PrimaryAttackType, 1.0 + (0.1 * GameState.WaveCount), 2);
+                                    break;
+                                case 'right':
+                                    attack = new DamageBox(this.game, this.body.x + 8 - 5, this.body.y + 8, 1, 0, this, this.PrimaryAttackType, 1.0 + (0.1 * GameState.WaveCount), 2);
+                                    break;
+                                case 'up':
+                                    attack = new DamageBox(this.game, this.body.x + 8, this.body.y + 8 + 5, 0, -1, this, this.PrimaryAttackType, 1.0 + (0.1 * GameState.WaveCount), 2);
+                                    break;
+                                case 'down':
+                                    attack = new DamageBox(this.game, this.body.x + 8, this.body.y + 8 - 5, 0, 1, this, this.PrimaryAttackType, 1.0 + (0.1 * GameState.WaveCount), 2);
+                                    break;
 
+                            }
+
+                            if (this.PrimaryAttackType == 3)
+                            {
+                                attack.setTarget(this.CurrentTarget);
+                            }
+                            World.AddAttack(attack);
                         }
                     }
                 }

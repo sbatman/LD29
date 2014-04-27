@@ -9,13 +9,14 @@ module LD29.Characters
         constructor(game: Phaser.Game, x: number, y: number, image: string)
         {
             super(game, x, y, image);
-            this.MaxHealth = 100;
+            this.MaxHealth = 40;
             this.MaxMana = 100;
             this.Mana = this.MaxMana;
             this.Health = this.MaxHealth;
             game.camera.follow(this);
             this.CanAttackCounterSkill1 = 0;
             this.CanAttackCounterSkill2 = 0;
+            this.body.collideWorldBounds = true;
         }
 
         update()

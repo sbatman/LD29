@@ -8,7 +8,7 @@ module LD29
 {
     export class MainGame extends Phaser.Game
     {
-
+        
         constructor()
         {
             super(window.innerWidth, window.innerHeight, Phaser.AUTO, 'content', null);
@@ -16,6 +16,7 @@ module LD29
             this.state.add('Preloader', PreloaderState, false);
             this.state.add('MainMenu', MenuState, false);
             this.state.add('Game', GameState, false);
+            this.state.add('GameOver', GameOverState, false);
 
             this.state.start('Boot');
         }

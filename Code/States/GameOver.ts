@@ -6,14 +6,13 @@
 // ///////////////////////////
 module LD29
 {
-    export class MenuState extends Phaser.State
+    export class GameOverState extends Phaser.State
     {
-        ThemeMusic: Phaser.Sound;
         playMessage: Phaser.Text;
         background: Phaser.Sprite;
         preload()
         {
-            this.background = new Phaser.Sprite(this.game, 0, 0, "content-graphics-title");
+            this.background = new Phaser.Sprite(this.game, 0, 0, "content-graphics-gameover");
             this.background.x = (this.game.canvas.width * 0.5) - (this.background.width * 0.5);
             this.background.y = (this.game.canvas.height * 0.5) - (this.background.height * 0.5);
             this.game.add.existing(this.background);
@@ -21,11 +20,11 @@ module LD29
 
         create()
         {
-            this.playMessage = this.game.add.text((window.innerWidth / 2) - 60, (window.innerHeight / 2) + 85, "Click To Play", { font: "19px Arial", fill: "FFD800", stroke: '#000000', strokeThickness: 3 });
+            this.playMessage = this.game.add.text((window.innerWidth / 2) - 70, (window.innerHeight / 2) + 75, "Final Score: " + GameState.CurrentScore, { font: "18px Arial", fill: "FF0008", stroke: '#000000', strokeThickness: 3 });
+            
+            this.playMessage = this.game.add.text((window.innerWidth / 2) - 75, (window.innerHeight / 2) + 95, "Click To Play Again", { font: "18px Arial", fill: "FF0008", stroke: '#000000', strokeThickness: 3 });
             //put event handler on user input to load the game fully when the user clicks a button.
             this.input.onDown.addOnce(this.fadeOut, this);
-            this.ThemeMusic =  this.game.add.audio("content-sound-maintheme", 0.2, true);
-            this.ThemeMusic.play();
         }
 
         fadeOut()
@@ -37,7 +36,7 @@ module LD29
         }
         startGame()
         {
-            this.game.state.start('Game', true, false);
+            location.reload();
         }
     }
 
