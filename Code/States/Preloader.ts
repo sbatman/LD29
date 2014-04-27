@@ -34,6 +34,8 @@ module LD29
             this.load.spritesheet("content-graphics-monsters-gold_zombie", "Content/Graphics/Monsters/GoldenZombie.png", 32, 64);
             this.load.spritesheet("content-graphics-monsters-skeleton", "Content/Graphics/Monsters/Skelly.png", 32, 64);
 
+            //load attack graphics
+            this.load.image("content-graphics-attacks-hitspot", "Content/Graphics/Attacks/Hitspot.png");
 
             //  Set-up our preloader sprite
             this.preloadBar = this.add.sprite((window.innerWidth / 2) - 200, (window.innerHeight / 2) - 20, 'content-graphics-PreLoader-ProgressBar');

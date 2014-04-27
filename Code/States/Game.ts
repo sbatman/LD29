@@ -34,6 +34,10 @@ module LD29
             for (var i = 0; i < this.Monsters.length; i++) {
                 this.GameWorld.AddCharacter(this.Monsters[i]);
             }
+            for (var i = 0; i < this.Monsters.length; i++)
+            {
+                this.Monsters[i].SetTarget(this.GameCharacter);
+            }
             this.GameHud = new Hud(this.game);
             this.GameHud.FireInfoPopup("This is a test message");
             this.GameHud.FireInfoPopup("And this is a second");
@@ -47,12 +51,7 @@ module LD29
         {
             this.GameWorld.Update();
             this.GameHud.Update();
-            this.GameCharacter.MovementUpdate();
-            for (var i = 0; i < this.Monsters.length; i++)
-            {
-                this.Monsters[i].SetTarget(this.GameCharacter.x, this.GameCharacter.y);
-                this.Monsters[i].MovementUpdate();
-            }
+
             this.GameHud.CurrentHP = this.game.rnd.realInRange(0, 10);
             this.GameHud.CurrentMP = this.game.rnd.realInRange(0, 10);
             this.GameHud.CurrentXP = this.game.rnd.realInRange(0, 10);

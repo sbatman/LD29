@@ -19,6 +19,7 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="Content\GetSource.png" />
+    <Content Include="Content\Graphics\Attacks\HitSpot.png" />
     <Content Include="Content\Graphics\Hud\BlueSegment.png" />
     <Content Include="Content\Graphics\Hud\GreenSegment.png" />
     <Content Include="Content\Graphics\Hud\InfoPopup.png" />
@@ -43,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="GameClasses\Attacks\DamageBox.ts" />
     <TypeScriptCompile Include="GameClasses\Characters\Player.ts" />
     <TypeScriptCompile Include="GameClasses\Hud.ts" />
     <TypeScriptCompile Include="GameClasses\World.ts" />

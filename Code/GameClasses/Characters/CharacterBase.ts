@@ -1,9 +1,13 @@
 ﻿module LD29.Characters {
-    export class CharacterBase extends Phaser.Sprite {
+    export class CharacterBase extends Phaser.Sprite
+    {
 
+        MyWorld: World;
+        CanAttackCounter: number;
         facing: string;
         MaxHealth: number;
         Health: number;
+        
         constructor(game: Phaser.Game, x: number, y: number, image: string) {
             super(game, x, y, image, 0);
 
@@ -11,7 +15,7 @@
 
             this.facing = 'right';
             game.add.existing(this);
-
+            this.CanAttackCounter = 0;
 
             this.animations.add('down', [0, 1, 2], 10, true);
             this.animations.add('left', [3, 4, 5], 10, true);
@@ -21,48 +25,28 @@
             game.physics.enable(this);
             this.body.height = 20;
             this.body.width = 20;
+            this.Health = 10;
         }
 
-        //MovementUpdate() {
+        Hit(strength: number)
+        {
+            this.Health -= strength;
+        }
 
-        //    this.body.velocity.y = 10;
-        //    //if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
-        //    //    this.x--;
+        SetWorld(world: World)
+        {
+            this.MyWorld = world;
+        }
 
-        //    //        this.animations.play('left');
-        //    //    this.facing = 'left';
-        //    //    if (this.animations.paused) {
-        //    //        this.animations.paused = false;
-        //    //    }
-        //    //} else if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
-        //    //    this.x++;
-        //    //        this.animations.play('right');
-        //    //    this.facing = 'right';
-        //    //    if (this.animations.paused) {
-        //    //        this.animations.paused = false;
-        //    //    }
-        //    //} else if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
-        //    //    this.y--;
-        //    //    if (this.facing != 'up') {
-        //    //        this.animations.play('up');
-        //    //        this.facing = 'up';
-        //    //    }
-        //    //    else if (this.animations.paused) {
-        //    //        this.animations.paused = false;
-        //    //    }
-        //    //} else if (this.game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
-        //    //    this.y++;
-        //    //    if (this.facing != 'down') {
-        //    //        this.animations.play('down');
-        //    //        this.facing = 'down';
-        //    //    }
-        //    //    else if (this.animations.paused) {
-        //    //        this.animations.paused = false;
-        //    //    }
-        //    //} else {
-        //    //    this.animations.paused=true;
-        //    //}
-        //}
+        update()
+        {
+            if (this.CanAttackCounter > 0)
+            {
+                this.CanAttackCounter--;
+            }
+        }
+
+        MovementUpdate() {}
 
     }
 } 

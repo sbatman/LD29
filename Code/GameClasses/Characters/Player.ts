@@ -49,6 +49,27 @@ module LD29.Characters {
             } else {
                 this.animations.paused = true;
             }
+
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && this.CanAttackCounter ==0)
+            {
+                this.CanAttackCounter = 20;
+                switch (this.facing)
+                {
+                    case 'left':
+                        World.AddAttack(new DamageBox(this.game, this.body.x - 50, this.body.y,-5,0));
+                        break;
+                    case 'right':
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 50, this.body.y,5,0));
+                        break;
+                    case 'up':
+                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y - 50,0,-5));
+                        break;
+                    case 'down':
+                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y + 50,0,5));
+                        break;
+
+                }
+            }
         }
 
     }
