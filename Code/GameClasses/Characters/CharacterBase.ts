@@ -4,7 +4,7 @@
     {
 
         MyWorld: World;
-        CanAttackCounter: number;
+        
         facing: string;
         MaxHealth: number;
         Health: number;
@@ -17,7 +17,7 @@
 
             this.facing = 'right';
             game.add.existing(this);
-            this.CanAttackCounter = 0;
+    
 
             this.animations.add('down', [0, 1, 2], 10, true);
             this.animations.add('left', [3, 4, 5], 10, true);
@@ -25,9 +25,8 @@
             this.animations.add('up', [9, 10, 11], 10, true);
 
             game.physics.enable(this);
-            this.body.height = 20;
-            this.body.width = 20;
-            this.Health = 10;
+            this.body.height = 16;
+            this.body.width = 16;
         }
 
         Hit(strength: number)

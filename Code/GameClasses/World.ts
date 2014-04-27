@@ -27,7 +27,10 @@ module LD29
             this.MasterMap_L1.resizeWorld();
             this.MasterMap.setCollisionBetween(33, 37);
             this.MasterMap.setCollisionBetween(12, 16);
+            this.MasterMap.setCollisionBetween(54, 56);
             this.MasterMap.setCollision(59);
+            this.MasterMap.setCollision(80);
+            this.MasterMap.setCollision(72);
             this.MasterMap_L1.debug = true;
             this.TheGame = game;
             this.CharactersInWorld = new Array<Characters.CharacterBase>();
@@ -137,13 +140,13 @@ module LD29
             if (obj1 instanceof DamageBox)
             {
                   (<Characters.CharacterBase>obj2).Hit((<DamageBox>obj1).Strength);
-                World.RemoveAttack(<DamageBox>obj1);
+                if ((<DamageBox>obj1).DieOnHit)World.RemoveAttack(<DamageBox>obj1);
                 return;
             }
             if (obj2 instanceof DamageBox)
             {
                  (<Characters.CharacterBase>obj1).Hit((<DamageBox>obj2).Strength);
-                World.RemoveAttack(<DamageBox>obj2);
+                if ((<DamageBox>obj1).DieOnHit)World.RemoveAttack(<DamageBox>obj2);
                 return;
             }
         }

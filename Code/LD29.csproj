@@ -19,7 +19,8 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="Content\GetSource.png" />
-    <Content Include="Content\Graphics\Attacks\HitSpot.png" />
+    <Content Include="Content\Graphics\Attacks\HitSpotSword.png" />
+    <Content Include="Content\Graphics\Attacks\HitSpotSpell.png" />
     <Content Include="Content\Graphics\Hud\BlueSegment.png" />
     <Content Include="Content\Graphics\Hud\GreenSegment.png" />
     <Content Include="Content\Graphics\Hud\InfoPopup.png" />
@@ -65,7 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
-    <Content Include="Content\Data\World\Main.csv">
+    <Content Include="Content\Data\World\Main2.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="web.Debug.config">

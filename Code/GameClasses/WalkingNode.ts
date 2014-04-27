@@ -31,5 +31,9 @@ module LD29
             }
             return this.NextNode;
         }
+        SetAlternative(node: WalkingNode)
+        {
+            this.Alternative = node;
+        }
     }
 }

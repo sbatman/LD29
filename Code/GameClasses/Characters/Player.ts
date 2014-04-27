@@ -3,6 +3,8 @@ module LD29.Characters
 {
     export class Player extends CharacterBase
     {
+        CanAttackCounterSkill1: number;
+        CanAttackCounterSkill2: number;
 
         constructor(game: Phaser.Game, x: number, y: number, image: string)
         {
@@ -10,15 +12,16 @@ module LD29.Characters
             this.MaxHealth = 100;
             this.Health = this.MaxHealth;
             game.camera.follow(this);
+            this.CanAttackCounterSkill1 = 0;
+            this.CanAttackCounterSkill2 = 0;
         }
 
         update()
         {
             GameState.GameHud.CurrentHP = (this.Health / this.MaxHealth) * 10;
-            if (this.CanAttackCounter > 0)
-            {
-                this.CanAttackCounter--;
-            }
+            if (this.CanAttackCounterSkill1 > 0) this.CanAttackCounterSkill1--;
+            if (this.CanAttackCounterSkill2 > 0) this.CanAttackCounterSkill2--;
+            
         }
 
         MovementUpdate()
@@ -72,23 +75,43 @@ module LD29.Characters
             {
                 this.animations.paused = true;
             }
-
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && this.CanAttackCounter == 0)
+            
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.ONE) && this.CanAttackCounterSkill1 == 0)
             {
-                this.CanAttackCounter = 20;
+                this.CanAttackCounterSkill1 = 40;
                 switch (this.facing)
                 {
                     case 'left':
-                        World.AddAttack(new DamageBox(this.game, this.body.x + 5, this.body.y, -200, 0,this,35));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 5, this.body.y, -1, 0,this,0));
                         break;
                     case 'right':
-                        World.AddAttack(new DamageBox(this.game, this.body.x - 5, this.body.y, 200, 0, this, 35));
+                        World.AddAttack(new DamageBox(this.game, this.body.x - 5, this.body.y, 1, 0, this, 0));
                         break;
                     case 'up':
-                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y + 5, 0, -200, this, 35));
+                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y + 5, 0, -1, this, 0));
                         break;
                     case 'down':
-                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y - 5, 0, 200, this, 35));
+                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y - 5, 0, 1, this, 0));
+                        break;
+
+                }
+            }
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.TWO) && this.CanAttackCounterSkill2 == 0)
+            {
+                this.CanAttackCounterSkill2 = 400;
+                switch (this.facing)
+                {
+                    case 'left':
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 5, this.body.y, -1, 0, this, 1));
+                        break;
+                    case 'right':
+                        World.AddAttack(new DamageBox(this.game, this.body.x - 5, this.body.y, 1, 0, this, 1));
+                        break;
+                    case 'up':
+                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y + 5, 0, -1, this, 1));
+                        break;
+                    case 'down':
+                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y - 5, 0, 1, this, 1));
                         break;
 
                 }

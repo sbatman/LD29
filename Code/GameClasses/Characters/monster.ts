@@ -6,16 +6,20 @@ module LD29.Characters
         CurrentTarget: Characters.CharacterBase;
         CurrentWalkingNode: WalkingNode;
         CheckForPlayerInterval: number;
-
         MaxSpeed: number;
-        constructor(game: Phaser.Game, x: number, y: number, image: string)
+        Type: string;
+
+        constructor(game: Phaser.Game, x: number, y: number, type: string)
         {
-            super(game, x, y, image);
+            super(game, x, y, 'content-graphics-monsters-' + type);
 
             this.animations.play('down');
             this.animations.paused = true;
-            this.MaxSpeed = 85;
+            this.MaxSpeed = 85 + game.rnd.realInRange(0,3);
+            this.MaxHealth = 16;
+            this.Health = 16;
             this.CheckForPlayerInterval = 40;
+            this.Type = type;
         }
 
 

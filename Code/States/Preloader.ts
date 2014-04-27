@@ -15,7 +15,7 @@ module LD29
         preload()
         {
             //Load world Data 
-            this.load.tilemap("content-data-world-main", "Content/Data/World/Main.csv", null, Phaser.Tilemap.CSV);
+            this.load.tilemap("content-data-world-main", "Content/Data/World/Main2.csv", null, Phaser.Tilemap.CSV);
             //load all hud images.          
             this.load.image("content-graphics-hud-statsblob", "Content/Graphics/Hud/StatsBlob.png");
             this.load.image("content-graphics-hud-redsegment", "Content/Graphics/Hud/RedSegment.png");
@@ -35,7 +35,8 @@ module LD29
             this.load.spritesheet("content-graphics-monsters-skeleton", "Content/Graphics/Monsters/Skelly.png", 32, 64);
 
             //load attack graphics
-            this.load.image("content-graphics-attacks-hitspot", "Content/Graphics/Attacks/Hitspot.png");
+            this.load.image("content-graphics-attacks-hitspotsword", "Content/Graphics/Attacks/HitSpotSword.png");
+            this.load.image("content-graphics-attacks-hitspotspell", "Content/Graphics/Attacks/HitSpotSpell.png");
 
             //  Set-up our preloader sprite
             this.preloadBar = this.add.sprite((window.innerWidth / 2) - 200, (window.innerHeight / 2) - 20, 'content-graphics-PreLoader-ProgressBar');
