@@ -35,10 +35,10 @@ module LD29
 
             this.GameCharacter = new Characters.Player(this.game, 750, 600,'content-graphics-monsters-gold_zombie');
      
-            this.GameWorld.SetSpriteAsCollidable(this.GameCharacter);
+            this.GameWorld.AddCharacter(this.GameCharacter);
 
             for (var i = 0; i < this.Monsters.length; i++) {
-                this.GameWorld.SetSpriteAsCollidable(this.Monsters[i]);
+                this.GameWorld.AddCharacter(this.Monsters[i]);
             }
             this.GameHud = new Hud(this.game);
             this.GameHud.FireInfoPopup("This is a test message");
