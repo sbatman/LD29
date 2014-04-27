@@ -47,6 +47,7 @@
     <TypeScriptCompile Include="GameClasses\Attacks\DamageBox.ts" />
     <TypeScriptCompile Include="GameClasses\Characters\Player.ts" />
     <TypeScriptCompile Include="GameClasses\Hud.ts" />
+    <TypeScriptCompile Include="GameClasses\WalkingNode.ts" />
     <TypeScriptCompile Include="GameClasses\World.ts" />
     <TypeScriptCompile Include="GameClasses\Characters\CharacterBase.ts" />
     <TypeScriptCompile Include="GameClasses\Characters\Monster.ts" />

@@ -14,6 +14,7 @@ module LD29
         private VisualSortGroup: Phaser.Group;
         private MasterMap: Phaser.Tilemap;
         private MasterMap_L1: Phaser.TilemapLayer;
+        private static WalkingNodes: Array<WalkingNode>;
 
         private TheGame: Phaser.Game;
 
@@ -31,7 +32,29 @@ module LD29
             this.TheGame = game;
             this.CharactersInWorld = new Array<Characters.CharacterBase>();
             World.AttacksInWorld = new Array<DamageBox>();
+            World.WalkingNodes = Array < WalkingNode>();
             this.VisualSortGroup = game.add.group();
+        }
+        static GetClosestWalkingNode(x: number, y: number)
+        {
+            var returnVar = null;
+            var BestDistance = 9999999;
+            for (var i = 0; i < World.WalkingNodes.length; i++)
+            {
+                var distance = Math.abs( World.WalkingNodes[i].X-x) + Math.abs( World.WalkingNodes[i].Y-y);
+                if (distance < BestDistance)
+                {
+                    BestDistance = distance;
+                    returnVar = World.WalkingNodes[i];
+                }
+
+            }
+            return returnVar;
+        }
+
+        AddWalkingNode(node : WalkingNode)
+        {
+            World.WalkingNodes.push(node);
         }
         AddCharacter(character: Characters.CharacterBase)
         {

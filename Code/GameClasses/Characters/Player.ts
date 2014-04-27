@@ -79,16 +79,16 @@ module LD29.Characters
                 switch (this.facing)
                 {
                     case 'left':
-                        World.AddAttack(new DamageBox(this.game, this.body.x + 5, this.body.y, -60, 0,this));
+                        World.AddAttack(new DamageBox(this.game, this.body.x + 5, this.body.y, -200, 0,this,35));
                         break;
                     case 'right':
-                        World.AddAttack(new DamageBox(this.game, this.body.x - 5, this.body.y, 60, 0, this));
+                        World.AddAttack(new DamageBox(this.game, this.body.x - 5, this.body.y, 200, 0, this, 35));
                         break;
                     case 'up':
-                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y + 5, 0, -60, this));
+                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y + 5, 0, -200, this, 35));
                         break;
                     case 'down':
-                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y - 5, 0, 60, this));
+                        World.AddAttack(new DamageBox(this.game, this.body.x, this.body.y - 5, 0, 200, this, 35));
                         break;
 
                 }
