@@ -11,8 +11,6 @@ module LD29
         GameWorld: World;
         GameHud: Hud;
         Monsters: Characters.Monster[] = [];
-        //var Monsters = new CustomCollection<Characters.Monster>();
-        //Monsters: Characters.Monster[] = new Characters.Monster[2];
         GameCharacterBase: Characters.CharacterBase;
         GameCharacter: Characters.Player;
 
@@ -25,10 +23,6 @@ module LD29
         {
             this.game.physics.startSystem(Phaser.Physics.ARCADE);           
             this.GameWorld = new World(this.game);
-           
-            //this.Monsters = new Array<Characters.Monster>(2);
-            //this.Monsters[0] = new Characters.Monster(this.game, 100, 100, 'content-graphics-monsters-green_zombie');
-            //this.Monsters[0] = 
 
             this.Monsters.push(new Characters.Monster(this.game, 400, 500, 'content-graphics-monsters-skeleton'));
             this.Monsters.push(new Characters.Monster(this.game, 100, 100, 'content-graphics-monsters-green_zombie'));
@@ -56,8 +50,9 @@ module LD29
             this.GameCharacter.MovementUpdate();
             for (var i = 0; i < this.Monsters.length; i++)
             {
-               this.Monsters[i].MovementUpdate();
-        }
+                this.Monsters[i].SetTarget(this.GameCharacter.x, this.GameCharacter.y);
+                this.Monsters[i].MovementUpdate();
+            }
             this.GameHud.CurrentHP = this.game.rnd.realInRange(0, 10);
             this.GameHud.CurrentMP = this.game.rnd.realInRange(0, 10);
             this.GameHud.CurrentXP = this.game.rnd.realInRange(0, 10);
@@ -65,7 +60,7 @@ module LD29
         }
         render()
         {
-            this.game.debug.bodyInfo(this.GameCharacter , 32, 320);
+            this.game.debug.bodyInfo(this.Monsters[1] , 32, 320);
         }
     }
 
