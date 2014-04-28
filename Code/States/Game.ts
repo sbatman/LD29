@@ -139,7 +139,7 @@ module LD29
 
         StartWave(difficulty: number)
         {
-            GameState.SpawnCountRemaining = difficulty;
+            GameState.SpawnCountRemaining = difficulty + 3;
 
         }
 
@@ -202,7 +202,7 @@ module LD29
                 case GameState.State_WaveStart:
                     GameState.WaveCount++;
                     GameState.GameHud.FireInfoPopup("Wave " + GameState.WaveCount + " Begins");
-                    this.StartWave(5 + (GameState.WaveCount * 2));
+                    this.StartWave(5 + (GameState.WaveCount * 3));
                     GameState.Stage = GameState.State_WaveActive;
                     break;
                 case GameState.State_WaveActive:
@@ -222,7 +222,7 @@ module LD29
 
                     } else
                     {
-                        GameState.WaveTimer = 500;
+                        GameState.WaveTimer = 100;
                         GameState.Stage = GameState.State_WaveCoolDown;
                         GameState.GameCharacter.Heal();
                         GameState.GameHud.FireInfoPopup("Wave " + GameState.WaveCount + " Complete");

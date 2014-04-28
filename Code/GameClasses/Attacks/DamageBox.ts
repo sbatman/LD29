@@ -26,8 +26,8 @@
             switch (type)
             {
                 case 0:
-                    this.Strength = 1;
-                    this.body.mass = 10;
+                    this.Strength = 2;
+                    this.body.mass = 15;
                     this.RemainingTime = 100;
                     this.DieOnHit = true;
                     this.TargetVeloX = velox * 190;

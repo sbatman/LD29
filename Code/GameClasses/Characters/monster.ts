@@ -20,7 +20,7 @@ module LD29.Characters
             this.animations.paused = true;
 
 
-            this.Health = 16 + game.rnd.realInRange(0, 5);
+             
             this.CheckForPlayerInterval = 40;
             this.Type = type;
             this.CanAttackCounterSkill1 = 0;
@@ -29,22 +29,23 @@ module LD29.Characters
                 case "green_zombie":
                     this.PrimaryAttackType = 2;
                     this.PreferedPoximity = 60;
-                    this.MaxHealth = 4 + GameState.WaveCount;
-                    this.MaxSpeed = 40 + game.rnd.realInRange(0, 28);
+                    this.MaxHealth = 5 + (GameState.WaveCount*0.5);
+                    this.MaxSpeed = 70 + game.rnd.realInRange(0, 28);
                     break;
                 case "skeleton":
                     this.PrimaryAttackType = 0;
                     this.PreferedPoximity = 80;
-                    this.MaxHealth = 2 + GameState.WaveCount;
-                    this.MaxSpeed = 50 + game.rnd.realInRange(0, 18);
+                    this.MaxHealth = 4 + (GameState.WaveCount * 0.5);
+                    this.MaxSpeed = 80 + game.rnd.realInRange(0, 18);
                     break;
                 case "undeadking":
                     this.PrimaryAttackType = 3;
                     this.PreferedPoximity = 200;
-                    this.MaxHealth = 2 + GameState.WaveCount;
-                    this.MaxSpeed = 50 + game.rnd.realInRange(0, 18);
+                    this.MaxHealth = 9 + (GameState.WaveCount * 0.5);
+                    this.MaxSpeed = 40 + game.rnd.realInRange(0, 18);
                     break;
             }
+            this.Health = this.MaxHealth;
         }
 
 
