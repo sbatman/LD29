@@ -157,3 +157,4 @@ $RECYCLE.BIN/
 /Code/*.js
 /Code/*.map
 /Code/*.config
+/Code/*.pubxml

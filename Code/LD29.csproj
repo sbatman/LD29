@@ -18,8 +18,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.css" />
+    <Content Include="Content\Audio\MainTheme.mp3" />
     <Content Include="Content\GetSource.png" />
+    <Content Include="Content\Graphics\Attacks\HitSpotAcid.png" />
+    <Content Include="Content\Graphics\Attacks\HitSpotBlades.png" />
+    <Content Include="Content\Graphics\Attacks\HitSpotDarkSpell.png" />
+    <Content Include="Content\Graphics\Attacks\HitSpotSpell.png" />
+    <Content Include="Content\Graphics\GameOver.jpg" />
+    <Content Include="Content\Graphics\Hud\BlueSegment.png" />
+    <Content Include="Content\Graphics\Hud\GreenSegment.png" />
+    <Content Include="Content\Graphics\Hud\InfoPopup.png" />
+    <Content Include="Content\Graphics\Hud\RedSegment.png" />
+    <Content Include="Content\Graphics\Hud\ScoreBar.png" />
+    <Content Include="Content\Graphics\Hud\StatsBlob.png" />
+    <Content Include="Content\Graphics\Monsters\GoldenZombie.png" />
+    <Content Include="Content\Graphics\Monsters\GreenZombie.png" />
+    <Content Include="Content\Graphics\Monsters\Skelly.png" />
+    <Content Include="Content\Graphics\Monsters\UndeadKing.png" />
     <Content Include="Content\Graphics\PreLoader\ProgressBar.jpg" />
+    <Content Include="Content\Graphics\Title.jpg" />
+    <Content Include="Content\Graphics\World\DungeonTilesPrimary.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\PoweredBy.png" />
     <Content Include="index.html" />
     <Content Include="Libs\Phaser\phaser.js">
@@ -31,17 +51,35 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="GameClasses\Attacks\DamageBox.ts" />
+    <TypeScriptCompile Include="GameClasses\Characters\Player.ts" />
+    <TypeScriptCompile Include="GameClasses\Hud.ts" />
+    <TypeScriptCompile Include="GameClasses\WalkingNode.ts" />
+    <TypeScriptCompile Include="GameClasses\World.ts" />
+    <TypeScriptCompile Include="GameClasses\Characters\CharacterBase.ts" />
+    <TypeScriptCompile Include="GameClasses\Characters\Monster.ts" />
     <TypeScriptCompile Include="MainGame.ts" />
     <TypeScriptCompile Include="Libs\Phaser\phaser.d.ts">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="States\Game.ts" />
+    <TypeScriptCompile Include="States\GameOver.ts" />
     <TypeScriptCompile Include="States\MainMenu.ts" />
     <TypeScriptCompile Include="States\Preloader.ts" />
     <TypeScriptCompile Include="States\Boot.ts" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Content\Audio\" />
-    <Folder Include="GameClasses\" />
+    <Content Include="web.config" />
+    <Content Include="Content\Data\World\Main2.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
